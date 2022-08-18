@@ -1,0 +1,12 @@
+// 
+// Remove the unit of a length
+// --------------------------------------------------
+
+@function _strip-unit( $_number ){ 
+	@if type-of( $_number ) == "number" and not unitless( $_number ){ 
+		@return ( $_number / ( $_number * 0 + 1 ) );
+
+	}
+
+	@return $_number;
+}

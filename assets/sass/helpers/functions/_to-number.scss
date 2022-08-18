@@ -1,0 +1,60 @@
+// 
+// Casts a string into a number
+// --------------------------------------------------
+
+@function to-number( $_value ){ 
+	@if type-of( $_value ) == 'number' { 
+		@return $_value;
+
+	} @else if type-of( $_value ) != 'string' { 
+		@warn "Value for `_to-number` should be a number or a string.";
+
+	}
+
+	$_first-character: str-slice( $_value, 1, 1 );
+
+	$_result: 0;
+	$_digits: 0;
+	$_minus: ( $_first-character == '-' );
+
+	$_numbers: ( 
+		'0': 0, 
+		'1': 1, 
+		'2': 2, 
+		'3': 3, 
+		'4': 4, 
+		'5': 5, 
+		'6': 6, 
+		'7': 7, 
+		'8': 8, 
+		'9': 9
+	);
+
+	// Remove +/- sign if present at first character
+	@if ( $_first-character == '+' or $_first-character == '-' ){ 
+		$_value: str-slice( $_value, 2 );
+
+	}
+
+	@for $i from 1 through str-length( $_value ) {
+		$_character: str-slice($_value, $i, $i);
+
+		@if not ( index( map-keys( $_numbers ), $_character ) or $_character == '.' ){ 
+			@return to-length( if( $_minus, -$_result, $_result ), str-slice( $_value, $i ) )
+		}
+
+		@if $_character == '.' { 
+			$_digits: 1;
+
+		} @else if $_digits == 0 { 
+			$_result: $_result * 10 + map-get( $_numbers, $_character );
+
+		} @else { 
+			$_digits: $_digits * 10;
+			$_result: $_result + map-get( $_numbers, $_character ) / $_digits;
+
+		}
+	}
+
+	@return if( $_minus, -$_result, $_result );
+}

@@ -1,0 +1,299 @@
+// 
+// Scaffolding
+// --------------------------------------------------
+// 
+// JavaScript View States
+// ----------------------------------------
+
+/* html { 
+	&.no-js { 
+		.hide-js-element { 
+			position: absolute !important;
+			clip: rect(1px, 1px, 1px, 1px);
+			overflow: hidden;
+			height: 1px;
+		}
+	}
+
+	&:not(.no-js) { 
+		.show-js-element { display: block !important;}
+	}
+} */
+
+
+
+
+.html {
+  &.no-js {
+    .hide-js-element {
+      display: none !important;
+    }
+  }
+  &:not(.no-js) {
+    .show-js-element {
+      display: block !important;
+    }
+  }
+}
+
+
+
+
+.js .hidden-if-js, 
+.js .visible-if-no-js, 
+.no-js .visible-if-js, 
+.no-js .hidden-if-no-js { display: none !important;}
+
+.js .visible-if-js-inline, 
+.js .hidden-if-no-js-inline, 
+.no-js .hidden-if-js-inline, 
+.no-js .visible-if-no-js-inline { display: inline !important;}
+
+.js .visible-if-js-inline-block, 
+.js .hidden-if-no-js-inline-block, 
+.no-js .hidden-if-js-inline-block, 
+.no-js .visible-if-no-js-inline-block { display: inline-block !important;}
+
+.js .visible-if-js, 
+.js .hidden-if-no-js, 
+.no-js .hidden-if-js, 
+.no-js .visible-if-no-js, 
+.js .visible-if-js-block, 
+.js .hidden-if-no-js-block, 
+.no-js .hidden-if-js-block, 
+.no-js .visible-if-no-js-block { display: block !important;}
+
+
+// 
+// Touch Device View States
+// ----------------------------------------
+
+.touchevents .hidden-if-touch, 
+.touchevents .visible-if-no-touch, 
+.no-touchevents .visible-if-touch, 
+.no-touchevents .hidden-if-no-touch { display: none !important;}
+
+.touchevents .visible-if-touch-inline, 
+.touchevents .hidden-if-no-touch-inline, 
+.no-touchevents .hidden-if-touch-inline, 
+.no-touchevents .visible-if-no-touch-inline { display: inline !important;}
+
+.touchevents .visible-if-touch-inline-block, 
+.touchevents .hidden-if-no-touch-inline-block, 
+.no-touchevents .hidden-if-touch-inline-block, 
+.no-touchevents .visible-if-no-touch-inline-block { display: inline-block !important;}
+
+.touchevents .visible-if-touch, 
+.touchevents .hidden-if-no-touch, 
+.no-touchevents .hidden-if-touch, 
+.no-touchevents .visible-if-no-touch, 
+.touchevents .visible-if-touch-block, 
+.touchevents .hidden-if-no-touch-block, 
+.no-touchevents .hidden-if-touch-block, 
+.no-touchevents .visible-if-no-touch-block { display: block !important;}
+
+
+// 
+// Clearfix
+// ----------------------------------------
+
+.clearfix { 
+	zoom: 1;
+
+	&:before, 
+	&:after { 
+		content: "\0020"; 
+		display: block; 
+		height: 0; 
+		overflow: hidden; 
+	}
+
+	&:after { clear: both;}
+}
+
+
+// 
+// Row Adjustments
+// ----------------------------------------
+
+.row { 
+	&.row-centered { 
+		text-align: center;
+
+		> [class*="col-"] { 
+			display: inline-block;
+			float: none;
+			text-align: left; // reset the text-align
+			margin-right: -4px; // inline-block space fix
+		}
+	}
+
+
+	&.row-collapse { 
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+
+		.container-fluid > & { 
+			margin-left: -( $grid-gutter-width / 2 ) !important;
+			margin-right: -( $grid-gutter-width / 2 ) !important;
+		}
+
+		> [class*="col-"] { 
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+	}
+
+
+	&.row-narrow { 
+		margin-left: -( $content-margin-quarter ) !important;
+		margin-right: -( $content-margin-quarter ) !important;
+
+		> [class*="col-"] { 
+			padding-left: $content-padding-quarter !important;
+			padding-right: $content-padding-quarter !important;
+		}
+	}
+
+
+	&.row-thin { 
+		margin-left: -( $content-margin-half ) !important;
+		margin-right: -( $content-margin-half ) !important;
+
+		> [class*="col-"] { 
+			padding-left: $content-padding-half !important;
+			padding-right: $content-padding-half !important;
+		}
+	}
+
+
+	&.row-thick { 
+		margin-left: -( $content-margin + $content-margin-half ) !important;
+		margin-right: -( $content-margin + $content-margin-half ) !important;
+
+		> [class*="col-"] { 
+			padding-left: ( $content-padding + $content-padding-half ) !important;
+			padding-right: ( $content-padding + $content-padding-half ) !important;
+		}
+	}
+
+
+	&.row-wide { 
+		margin-left: -( $content-margin-double ) !important;
+		margin-right: -( $content-margin-double ) !important;
+
+		> [class*="col-"] { 
+			padding-left: $content-padding-double !important;
+			padding-right: $content-padding-double !important;
+		}
+	}
+
+
+	@include query-desktop { 
+
+		&.make-equal-height { 
+			overflow: hidden;
+
+			> [class*="col-"] { 
+				padding-bottom: 99999px;
+				margin-bottom: -99999px;
+			}
+		}
+
+	}
+
+}
+
+
+// 
+// Spacer, Margin & Padding
+// ----------------------------------------
+
+$_size_amounts : ( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100 );
+
+@mixin build-space( $_screen: null ) { 
+	@each $_size in $_size_amounts { 
+		$_pos_size: $_size;
+		$_pos_suffix: if( ( $_screen != null ), #{$_screen}-#{$_size}, #{$_size} );
+
+		// Padding
+		.p-#{$_pos_suffix}, 
+		.p-a-#{$_pos_suffix} { padding:        #{$_pos_size}px !important;}
+		.p-t-#{$_pos_suffix} { padding-top:    #{$_pos_size}px !important;}
+		.p-r-#{$_pos_suffix} { padding-right:  #{$_pos_size}px !important;}
+		.p-b-#{$_pos_suffix} { padding-bottom: #{$_pos_size}px !important;}
+		.p-l-#{$_pos_suffix} { padding-left:   #{$_pos_size}px !important;}
+
+		.p-x-#{$_pos_suffix}, 
+		.p-h-#{$_pos_suffix} { 
+			padding-left:  #{$_pos_size}px !important;
+			padding-right: #{$_pos_size}px !important;
+		}
+		.p-y-#{$_pos_suffix}, 
+		.p-v-#{$_pos_suffix} { 
+			padding-top:    #{$_pos_size}px !important;
+			padding-bottom: #{$_pos_size}px !important;
+		}
+
+		// Margin
+		.m-#{$_pos_suffix}, 
+		.m-a-#{$_pos_suffix} { margin:        #{$_pos_size}px !important;}
+		.m-t-#{$_pos_suffix} { margin-top:    #{$_pos_size}px !important;}
+		.m-r-#{$_pos_suffix} { margin-right:  #{$_pos_size}px !important;}
+		.m-b-#{$_pos_suffix} { margin-bottom: #{$_pos_size}px !important;}
+		.m-l-#{$_pos_suffix} { margin-left:   #{$_pos_size}px !important;}
+
+		.m-x-#{$_pos_suffix}, 
+		.m-h-#{$_pos_suffix} { 
+			margin-left:  #{$_pos_size}px !important;
+			margin-right: #{$_pos_size}px !important;
+		}
+		.m-y-#{$_pos_suffix}, 
+		.m-v-#{$_pos_suffix} { 
+			margin-top:    #{$_pos_size}px !important;
+			margin-bottom: #{$_pos_size}px !important;
+		}
+
+		@if $_pos_size > 0 { 
+			$_neg_size: ( $_pos_size * -1 );
+
+			$_neg_suffix: if( ( $_screen != null ), #{$_screen}-#{$_neg_size}, #{$_neg_size} );
+
+			.m-#{$_neg_suffix}, 
+			.m-a-#{$_neg_suffix} { margin:        #{$_neg_size}px !important;}
+			.m-t-#{$_neg_suffix} { margin-top:    #{$_neg_size}px !important;}
+			.m-r-#{$_neg_suffix} { margin-right:  #{$_neg_size}px !important;}
+			.m-b-#{$_neg_suffix} { margin-bottom: #{$_neg_size}px !important;}
+			.m-l-#{$_neg_suffix} { margin-left:   #{$_neg_size}px !important;}
+
+			.m-x-#{$_neg_suffix}, 
+			.m-h-#{$_neg_suffix} { 
+				margin-left:  #{$_neg_size}px !important;
+				margin-right: #{$_neg_size}px !important;
+			}
+			.m-y-#{$_neg_suffix}, 
+			.m-v-#{$_neg_suffix} { 
+				margin-top:    #{$_neg_size}px !important;
+				margin-bottom: #{$_neg_size}px !important;
+			}
+		}
+	}
+}
+
+@include build-space();
+
+@include query-screen-xs-up { 
+	@include build-space( xs );
+}
+
+@include query-screen-sm-up { 
+	@include build-space( sm );
+}
+
+@include query-screen-md-up { 
+	@include build-space( md );
+}
+
+@media query-screen-lg-up { 
+	@include build-space( lg );
+}

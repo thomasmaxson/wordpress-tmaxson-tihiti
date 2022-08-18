@@ -1,0 +1,274 @@
+//
+// Components
+// --------------------------------------------------
+//
+// Easing/Timing
+// ----------------------------------------
+//
+// Cubic
+// ------------------------------
+
+$ease-in-cubic:                            cubic-bezier( .55, .055, .675, .19 ) !default;
+$ease-out-cubic:                           cubic-bezier( .215, .61, .355, 1 ) !default;
+$ease-in-out-cubic:                        cubic-bezier( .645, .045, .355, 1 ) !default;
+
+
+//
+// Circ
+// ------------------------------
+
+$ease-in-circ:                             cubic-bezier( .6, .04, .98, .335 ) !default;
+$ease-out-circ:                            cubic-bezier( .075, .82, .165, 1 ) !default;
+$ease-in-out-circ:                         cubic-bezier( .785, .135, .15, .86 ) !default;
+
+
+//
+// Expo
+// ------------------------------
+
+$ease-in-expo:                             cubic-bezier( .95, .05, .795, .035 ) !default;
+$ease-out-expo:                            cubic-bezier( .19, 1, .22, 1 ) !default;
+$ease-in-out-expo:                         cubic-bezier( 1, 0, 0, 1 ) !default;
+
+
+//
+// Quad
+// ------------------------------
+
+$ease-in-quad:                             cubic-bezier( .55, .085, .68, .53 ) !default;
+$ease-out-quad:                            cubic-bezier( .25, .46, .450, .94 ) !default;
+$ease-in-out-quad:                         cubic-bezier( .455, .03, .515, .955 ) !default;
+
+
+//
+// Quart
+// ------------------------------
+
+$ease-in-quart:                            cubic-bezier( .895, .03, .685, .22 ) !default;
+$ease-out-quart:                           cubic-bezier( .165, .84, .44, 1 ) !default;
+$ease-in-out-quart:                        cubic-bezier( .77, 0, .175, 1 ) !default;
+
+
+//
+// Quint
+// ------------------------------
+
+$ease-in-quint:                            cubic-bezier( .755, .05, .855, .06 ) !default;
+$ease-out-quint:                           cubic-bezier( .23, 1, .320, 1 ) !default;
+$ease-in-out-quint:                        cubic-bezier( .86, 0, .07, 1 ) !default;
+
+
+//
+// Sine
+// ------------------------------
+
+$ease-in-sine:                             cubic-bezier( .47, 0, .745, .715 ) !default;
+$ease-out-sine:                            cubic-bezier( .39, .575, .565, 1 ) !default;
+$ease-in-out-sine:                         cubic-bezier( .445, .05, .55, .95 ) !default;
+
+
+//
+// Back
+// ------------------------------
+
+$ease-in-back:                             cubic-bezier( .6, -.28, .735, .045 ) !default;
+$ease-out-back:                            cubic-bezier( .175, .885, .32, 1.275 ) !default;
+$ease-in-out-back:                         cubic-bezier( .68, -0.55, .265, 1.55 ) !default;
+
+
+//
+// Smooth Fade
+// ------------------------------
+
+$ease-smooth-fade:                         cubic-bezier( .365, .005, .355, 1 ) !default;
+
+
+//
+// Transitions
+// ----------------------------------------
+
+$transition-duration:                      0.15s !default;
+$transition-timing-function:               ease-in-out !default;
+
+
+//
+// Buttons
+// ----------------------------------------
+
+$btn-default-color:                        $white;
+$btn-default-bg:                           $brand-default;
+$btn-default-border:                       darken( $btn-default-bg, 5% );
+
+$btn-primary-border:                       $btn-primary-bg;
+$btn-success-border:                       $btn-success-bg;
+$btn-info-border:                          $btn-info-bg;
+$btn-warning-border:                       $btn-warning-bg;
+$btn-danger-border:                        $btn-danger-bg;
+
+$btn-border-radius-base:                   0;
+$btn-border-radius-large:                  0;
+$btn-border-radius-small:                  0;
+
+
+//
+// Secondary Color
+// ------------------------------
+
+$btn-secondary-color:                      $text-color;
+$btn-secondary-bg:                         $gray-200;
+$btn-secondary-border:                     $btn-secondary-bg;
+
+
+// 
+// Horizontal Rule
+// ------------------------------
+
+$hr-border:                                $border-color;
+
+
+//
+// Media
+// ----------------------------------------
+//
+// Thumbnails (Images)
+// ------------------------------
+
+$thumbnail-border-radius:                  0;
+
+
+//
+// Header Navbar
+// ----------------------------------------
+
+$navbar-height:                            60px;
+
+$navbar-padding-horizontal:                $content-padding-half;
+$navbar-padding-vertical:                  10px;
+
+$navbar-margin-bottom:                     0;
+$navbar-border-radius:                     0;
+
+$navbar-default-color:                     $white;
+$navbar-default-bg:                        $brand-primary;
+$navbar-default-border:                    $brand-primary;
+
+$navbar-default-link-color:                $navbar-default-color;
+$navbar-default-link-hover-color:          $white;
+$navbar-default-link-hover-bg:             transparent;
+$navbar-default-link-active-color:         $white;
+$navbar-default-link-active-bg:            transparent;
+
+$navbar-height-total:                      ( $navbar-height + ( $content-padding-quarter * 1 ) );
+
+
+//
+// Navbar Toggle
+// ----------------------------------------
+
+$navbar-default-toggle-hover-bg:           transparent;
+$navbar-default-toggle-icon-bar-bg:	       $navbar-default-color;
+$navbar-default-toggle-border-color:       $navbar-default-color;
+
+$navbar-toggle-rotate-speed:               1;
+$navbar-toggle-top-offset:                 6px;
+
+$navbar-toggle-rotate:                     ( ( ( $navbar-toggle-rotate-speed / 4 ) * 360 ) + 45deg );
+
+
+// 
+// Footer
+// ----------------------------------------
+
+$footer-mobile-height:                     155px;
+$footer-height:                            105px;
+
+
+// Social Icons
+// ----------------------------------------
+
+$social-icon-mobile-size:                  32px;
+$social-icon-size:                         40px;
+
+$social-icon-color:                        rgba( 255, 255, 255, 0.6 );
+$social-icon-hover-color:                  $white;
+
+
+//
+// Forms
+// ----------------------------------------
+
+$input-color:                              $text-color;
+
+$input-color:                              $text-color;
+$input-color-placeholder:                  $gray-400;
+
+$input-border:                             $border-color;
+$input-border-focus:                       darken( $border-color, 20% );;
+
+$input-border-radius:                      0;
+$input-border-radius-large:                $input-border-radius;
+$input-border-radius-small:                $input-border-radius;
+
+$form-group-margin-bottom:                 $content-margin;
+
+$legend-color:                             $text-color;
+$legend-border-color:                      $border-color;
+
+$input-group-addon-bg:                     $white;
+
+$textarea-row-count:                       2;
+
+$input-icon-width:                         50px;
+$input-icon-height:                        40px;
+
+
+//
+// Alerts
+// ----------------------------------------
+
+$alert-border-radius:                      0;
+
+$alert-success-text:                       $white;
+$alert-info-text:                          $white;
+$alert-warning-text:                       $white;
+$alert-danger-text:                        $white;
+
+
+//
+// Blockquotes
+// ----------------------------------------
+
+$blockquote-small-color:                   $text-color;
+$blockquote-font-size:                     $font-size-medium;
+$blockquote-border-color:                  transparent;
+
+
+//
+// Panels
+// ----------------------------------------
+
+$panel-bg:                                 $body-bg;
+$panel-border-radius:                      0;
+
+$panel-heading-padding:                    $content-margin $content-margin 0;
+$panel-body-padding:                       $content-margin $content-margin 0;
+$panel-footer-padding:                     $content-margin $content-margin 0;
+
+
+$panel-inner-border:                       transparent;
+$panel-footer-bg:                          $body-bg;
+
+$panel-default-text:                       $text-color;
+$panel-default-border:                     $border-color;
+$panel-default-heading-bg:                 $body-bg;
+
+
+//
+// Progress Bars
+// ----------------------------------------
+
+$progress-border-radius:                   0;
+$progress-bg:                              $gray-100;
+
+$progress-bar-color:                       $white;
+$progress-bar-bg:                          $gray-800;

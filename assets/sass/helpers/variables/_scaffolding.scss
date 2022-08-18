@@ -1,0 +1,21 @@
+// 
+// Scaffolding
+// --------------------------------------------------
+
+$container-base:               0;
+
+// Extra small screen / mobile
+$container-mobile:             480px;
+$container-xs:                 $container-mobile;
+
+// Small screen / tablet
+$container-tablet:             768px;
+$container-sm:                 $container-tablet;
+
+// Medium screen / desktop
+$container-desktop:            992px;
+$container-md:                 $container-desktop;
+
+// Large screen / wide desktop
+$container-large-desktop:      1200px;
+$container-lg:                 $container-large-desktop;

@@ -1,0 +1,57 @@
+// 
+// Position
+// --------------------------------------------------
+
+.top( @_size: null ){ 
+	& when     ( @_size = null ) {}
+	& when not ( @_size = null ) { top: @_size;}
+}
+
+.right( @_size: null ){ 
+	& when     ( @_size = null ) {}
+	& when not ( @_size = null ) { right: @_size;}
+}
+
+.bottom( @_size: null ){ 
+	& when     ( @_size = null ) {}
+	& when not ( @_size = null ) { bottom: @_size;}
+}
+
+.left( @_size: null ){ 
+	& when     ( @_size = null ) {}
+	& when not ( @_size = null ) { left: @_size;}
+}
+
+.position( @_position: null, @_top: null, @_right: @_top, @_bottom: @_top, @_left: @_right ){ 
+	& when not ( @_position = null ) { position: @_position;}
+
+	.top( @_top );
+	.right( @_right );
+	.bottom( @_bottom );
+	.left( @_left );
+}
+
+
+/*.trbl( t, args... )
+  // Top
+  top t
+
+  // Right
+  if length(args) > 0
+    right args[0]
+  else
+    right t
+
+  // Bottom
+  if length(args) > 1
+    bottom args[1]
+  else
+    bottom t
+
+  // Left
+  if length(args) > 2
+    left args[2]
+  else if length(args) > 0
+    left args[0]
+  else
+    left t*/

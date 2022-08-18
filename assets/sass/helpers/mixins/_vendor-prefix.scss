@@ -1,0 +1,13 @@
+// 
+// Prefix
+// --------------------------------------------------
+
+$_prefixes: 'webkit', 'khtml', 'moz', 'ms', 'o' !default;
+
+@mixin prefix( $_property, $_value, $prefixes: $_prefixes ){ 
+	@each $_prefix in $prefixes { 
+		-#{$_prefix}-#{$_property}: $_value;
+	}
+
+	#{$_property}: $_value;
+}

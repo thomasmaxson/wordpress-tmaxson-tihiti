@@ -1,0 +1,61 @@
+// 
+// Media Queries
+// --------------------------------------------------
+// 
+// Breakpoints
+// ----------------------------------------
+
+$query-all:                                all;         // Used for all media type devices
+$query-screen:                             only screen; // Used for computer screens, tablets, smart-phones etc.
+$query-print:                              only print;  // Used for printers
+$query-speach:                             only speach; // Used for screenreaders that "reads" the page out loud
+
+$query-mobile:                             ( max-width: $grid-float-breakpoint );
+$query-desktop:                            ( min-width: $grid-float-breakpoint );
+
+$query-xs:                                 ( min-width: $container-base ) and ( max-width: ( $container-sm - 1 ) );
+$query-xs-up:                              ( min-width: $container-base );
+$query-xs-down:                            ( max-width: ( $container-sm - 1 ) );
+
+$query-sm:                                 ( min-width: $container-sm ) and ( max-width: ( $container-md - 1 ) );
+$query-sm-up:                              ( min-width: $container-sm );
+$query-sm-down:                            ( max-width: ( $container-md - 1 ) );
+
+$query-md:                                 ( min-width: $container-md ) and ( max-width: ( $container-lg - 1 ) );
+$query-md-up:                              ( min-width: $container-md );
+$query-md-down:                            ( max-width: ( $container-lg - 1 ) );
+
+$query-lg:                                 ( min-width: $container-lg );
+$query-lg-up:                              $query-lg;
+$query-lg-down:                            ''; // DO NOT USE
+
+
+// 
+// Orientation
+// ----------------------------------------
+
+$query-portrait:                           ( orientation: portrait );
+$query-landscape:                          ( orientation: landscape );
+
+
+// 
+// Internet Explorer
+// ----------------------------------------
+
+$query-ie6-7:                              screen\9;
+$query-ie8:                                \0screen;
+$query-oldIE:                              $query-ie8,$query-ie6-7;
+$query-ie9-10:                             screen and (min-width:0\0);
+
+
+// 
+// Other
+// ----------------------------------------
+
+// https://www.scottohara.me/note/2019/03/27/reduced-sticky.html
+$query-reduce-motion:                      ( prefers-reduced-motion: reduce ); // Reduced motion
+
+// https://blog.greggant.com/posts/2018/12/14/now-supporting-darkmode.html
+$query-color-scheme-dark:                  ( prefers-color-scheme: dark );
+$query-color-scheme-light:                 ( prefers-color-scheme: light );
+

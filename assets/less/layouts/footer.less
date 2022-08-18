@@ -1,0 +1,60 @@
+// 
+// Footer
+// --------------------------------------------------
+
+.site-footer { 
+	padding-top: @content-padding;
+	.color( @gray-light );
+	.font-size( @font-size-small );
+	.background-rgb( @gray-darkest );
+
+	.site-header.navbar-fixed-bottom ~ & { 
+		padding-bottom: ( @navbar-height + ( @content-padding-quarter * 2 ) );
+	}
+
+	.trapdoor-footer & { 
+		.position( fixed, null, null, 0 );
+		.size( 100%, @footer-mobile-height );
+		z-index: -1;
+
+		@media @query-screen and @query-desktop { 
+			height: @footer-height;
+		}
+	}
+
+	.copyright { 
+		text-align: center;
+
+		@media @query-screen and @query-desktop { 
+			line-height: @social-icon-size;
+			text-align: left;
+		}
+	}
+
+	.social-media { 
+		text-align: center;
+
+		@media @query-screen and @query-desktop { 
+			margin-top: 5px;
+			text-align: right;
+		}
+	}
+
+	.social-icons { 
+		.btn.btn-outline { 
+			border-color: @social-icon-color;
+			.color( @social-icon-color );
+
+			&:hover { 
+				border-color: @social-icon-hover-color;
+				.color( @social-icon-hover-color );
+			}
+
+		//	@each $_social-site, $_social-color in $social-sites { 
+		//		&.btn-#{$_social-site}:hover { box-shadow: 0 0 0 5px $_social-color;}
+		//	}
+
+		}
+	}
+
+}

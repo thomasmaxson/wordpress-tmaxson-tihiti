@@ -1,0 +1,97 @@
+// 
+// Animations
+// --------------------------------------------------
+//
+// Mouse, Scrollwheel
+// ----------------------------------------
+
+@_scrollWheel-start:                       5px;
+@_scrollWheel-end:                         10px;
+
+@-webkit-keyframes scrollWheel { 
+	0%  { 
+		top: @_scrollWheel-start;
+		opacity: 0;
+	}
+
+	25%  { 
+		top: @_scrollWheel-start;
+		opacity: 1.0;
+	}
+
+	75% { 
+		top: @_scrollWheel-end;
+		opacity: 1.0;
+	}
+
+	100% { 
+		top: @_scrollWheel-end;
+		opacity: 0;
+	}
+}
+
+@-moz-keyframes scrollWheel { 
+	0%  { 
+		top: @_scrollWheel-start;
+		opacity: 0;
+	}
+
+	25%  { 
+		top: @_scrollWheel-start;
+		opacity: 1.0;
+	}
+
+	75% { 
+		top: @_scrollWheel-end;
+		opacity: 1.0;
+	}
+
+	100% { 
+		top: @_scrollWheel-end;
+		opacity: 0;
+	}
+}
+
+@-ms-keyframes scrollWheel { 
+	0%  { 
+		top: @_scrollWheel-start;
+		opacity: 0;
+	}
+
+	25%  { 
+		top: @_scrollWheel-start;
+		opacity: 1.0;
+	}
+
+	75% { 
+		top: @_scrollWheel-end;
+		opacity: 1.0;
+	}
+
+	100% { 
+		top: @_scrollWheel-end;
+		opacity: 0;
+	}
+}
+
+@keyframes scrollWheel { 
+	0%  { 
+		top: @_scrollWheel-start;
+		opacity: 0;
+	}
+
+	25%  { 
+		top: @_scrollWheel-start;
+		opacity: 1.0;
+	}
+
+	75% { 
+		top: @_scrollWheel-end;
+		opacity: 1.0;
+	}
+
+	100% { 
+		top: @_scrollWheel-end;
+		opacity: 0;
+	}
+}

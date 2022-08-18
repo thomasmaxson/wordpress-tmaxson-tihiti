@@ -1,0 +1,42 @@
+// 
+// Social Icons
+// --------------------------------------------------
+
+.processes { 
+
+	.process { 
+		@include relative( $content-margin-double, null, null, null );
+		opacity: 0;
+		@include transition( all $transition-duration $transition-timing-function $transition-duration );
+
+		&.active { 
+			top: 0;
+			opacity: 1.0;
+		}
+	}
+
+	.media { 
+		margin-bottom: $content-margin-half;
+
+		.media-left, 
+		.media > .pull-left { 
+			padding-right: $content-padding;
+
+			p { margin: 0;}
+		}
+
+		.media-right, 
+		.media > .pull-right { 
+			padding-left: $content-padding;
+
+			p { margin: 0;}
+		}
+
+		.media-body { 
+			vertical-align: middle;
+
+			* { margin-bottom: 0;}
+		}
+	}
+
+}

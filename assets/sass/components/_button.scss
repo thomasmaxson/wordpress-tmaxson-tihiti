@@ -1,0 +1,291 @@
+// 
+// Buttons
+// --------------------------------------------------
+//
+// Skip Content
+// ----------------------------------------
+
+.skip-to-content { 
+	$_skip-content-focus-offset : $content-padding-quarter;
+
+	@include fixed( null, null, null, -15em );
+	display: block;
+	padding: $padding-large-vertical $padding-large-horizontal;
+	@include square( auto );
+	@include font-primary( $font-size-medium, medium );
+	line-height: normal;
+	color: $brand-primary;
+	background-color: $white;
+	z-index: 9999;
+	@include opacity( 0 );
+	transition: opacity $transition-duration $transition-timing-function;
+	@include material-box-shadow( 1 );
+	@include box-shadow( 1px 0 -2px $brand-primary-dark );
+
+	&:focus { 
+		@include fixed( $_skip-content-focus-offset, null, null, $_skip-content-focus-offset );
+		color: $brand-primary-dark;
+		text-decoration: none;
+		outline: none;
+		@include opacity( 1.0 );
+	}
+
+	&:hover { 
+		color: $brand-primary-dark;
+		text-decoration: underline;
+		@include translateY( -1px );
+		box-shadow: 0 7px 14px rgba( 50, 50, 93, 0.1 ), 0 3px 6px rgba( 0, 0, 0, 0.08 );
+	}
+}
+
+
+// 
+// Custom Variants
+// ----------------------------------------
+
+.btn { 
+	&.btn-secondary { 
+		@include button-variant( $btn-secondary-color, $btn-secondary-bg, $btn-secondary-border );
+	}
+
+	&.btn-primary-light { 
+		@include button-variant( $btn-primary-color, $brand-primary-light, $brand-primary-light );
+	}
+
+	&.btn-primary-dark { 
+		@include button-variant( $btn-primary-color, $brand-primary-dark, $brand-primary-dark );
+	}
+}
+
+
+$_btn-reverse-border : $btn-default-border;
+$_btn-reverse-color  : $btn-default-color;
+$_btn-reverse-bg     : $btn-default-bg;
+
+@each $_social-site, $_social-color in $social-sites { 
+	$_color  : $white;
+	$_bg     : $_social-color;
+ 	$_border : $_social-color;
+
+ 	.btn.btn-#{$_social-site} { 
+		@include button-variant( $_color, $_bg, $_border );
+
+		&.btn-outline { 
+			@include button-variant( $_bg, transparent, $_bg, $_color, $_bg, $_border );
+		}
+
+		&.btn-reverse { 
+			@include button-variant( $_btn-reverse-color, $_btn-reverse-bg, $_btn-reverse-border, $_color, $_bg, $_border );
+		}
+	}
+}
+
+
+// 
+// Borderless
+// ----------------------------------------
+
+.btn.btn-borderless { border: 0;}
+
+
+// 
+// Rounded
+// ----------------------------------------
+
+.btn.btn-rounded { border-radius: 1000em;}
+
+
+// 
+// Square
+// ----------------------------------------
+
+.btn.btn-sq { 
+	$_btn-sq-height-base: ( $line-height-computed + $padding-base-vertical * 2 );
+	$_btn-sq-height-lg:	 ( floor( $font-size-large * $line-height-base ) + $padding-large-vertical * 2 );
+	$_btn-sq-height-sm:	 ( floor( $font-size-small * 1.5 ) + $padding-small-vertical * 1.5 );
+	$_btn-sq-height-xs:	 ( floor( $font-size-small * 1.2 ) + $padding-small-vertical + 1 );
+
+	position: relative;
+//	padding-left: ( $_btn-sq-height-base + $padding-base-horizontal );
+	height: ( $_btn-sq-height-base + 2 );
+	width: ( $_btn-sq-height-base + 2 );
+	text-align: left;
+	background-color: $btn-default-bg;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	.fa { 
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: $_btn-sq-height-base;
+		line-height: ( $_btn-sq-height-base + 2 );
+		font-size: ( $font-size-large + 2 );
+		text-align: center;
+	}
+
+
+	&.btn-xs { 
+		height: ( $_btn-sq-height-xs + 2 );
+		width: ( $_btn-sq-height-xs + 2 );
+		padding-left: 0;
+		padding-right: 0;
+
+		.fa {
+			line-height: $_btn-sq-height-xs;
+			width: $_btn-sq-height-xs;
+			font-size: ( $font-size-small + 2 );
+		}
+	}
+
+	&.btn-sm { 
+		height: ( $_btn-sq-height-sm + 2 );
+		width: ( $_btn-sq-height-sm + 2 );
+		padding-left: 0;
+		padding-right: 0;
+
+		.fa {
+			line-height: $_btn-sq-height-sm;
+			width: $_btn-sq-height-sm;
+			font-size: ( $font-size-medium + 2 );
+		}
+	}
+
+	&.btn-lg { 
+		height: $_btn-sq-height-lg;
+		width: $_btn-sq-height-lg;
+		padding-left: 0;
+		padding-right: 0;
+
+		.fa { 
+			line-height: $_btn-sq-height-lg;
+			width: $_btn-sq-height-lg;
+			font-size: ( $font-size-large + 5 );
+		}
+	}
+}
+
+
+// 
+// Caret (">")
+// ----------------------------------------
+
+.btn.btn-more { 
+	&:after { 
+	//	content: '〉';
+		content: $unicode-rsaquo;
+		display: inline-block;
+		position: relative;
+		top: 1px;
+		padding-left: floor( $padding-base-horizontal / 2 );
+		color: inherit;
+	}
+
+	&.btn-xs:after { padding-left: floor( $padding-xs-horizontal / 2 );}
+
+	&.btn-sm:after { padding-left: floor( $padding-small-horizontal / 2 );}
+
+	&.btn-lg:after { padding-left: floor( $padding-large-horizontal / 2 );}
+}
+
+
+// 
+// Block/No Block
+// ----------------------------------------
+
+.btn { 
+
+	&.btn-xs-block { 
+		display: block;
+		width: 100%;
+	}
+
+	&.btn-no-block, 
+	&.btn-xs-no-block { 
+		display: inline-block;
+		width: auto;
+	}
+
+	// Small Screen and Up ONLY
+	@include query-screen-sm-up { 
+		&.btn-sm-block { 
+			display: block;
+			width: 100%;
+		}
+
+		&.btn-sm-no-block { 
+			display: inline-block;
+			width: auto;
+		}
+	}
+
+	// Medium Screen and Up ONLY
+	@include query-screen-md-up { 
+		&.btn-md-block { 
+			display: block;
+			width: 100%;
+		}
+
+		&.btn-md-no-block { 
+			display: inline-block;
+			width: auto;
+		}
+	}
+
+	// Large Screen and Up ONLY
+	@include query-screen-lg-up { 
+		&.btn-lg-block { 
+			display: block;
+			width: 100%;
+		}
+
+		&.btn-lg-no-block { 
+			display: inline-block;
+			width: auto;
+		}
+	}
+
+}
+
+
+// 
+// Outline
+// ----------------------------------------
+
+@each $_bootstrap-state, $_map in $bootstrap-states { 
+	@if map-has-key( $_map, button ){ 
+		$_button : map-get( $_map, button );
+
+		$_color  : map-get( $_button, color );
+		$_bg     : map-get( $_button, bg );
+		$_border : map-get( $_button, border );
+
+		$_hover-color  : $white; // $_color;
+		$_hover-bg     : $_bg;
+		$_hover-border : $_border;
+
+		.btn.btn-#{$_bootstrap-state}.btn-outline { 
+			@include button-variant( $_bg, transparent, $_bg, $_hover-color, $_hover-bg, $_hover-border );
+		}
+	}
+}
+
+
+// 
+// Call to Action
+// ----------------------------------------
+
+.btn-cta { 
+	padding: $content-padding-half 9999px;
+	margin-right: -9999px;
+	margin-left: -9999px;
+	width: auto;
+
+	&:hover, 
+	&:focus { 
+		@include translateY( 0 );
+		@include box-shadow( none );
+	}
+}

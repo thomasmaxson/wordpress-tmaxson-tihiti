@@ -1,0 +1,109 @@
+// 
+// Buttons
+// --------------------------------------------------
+// 
+// Variant (overrides Bootstrap mixin)
+// ----------------------------------------
+
+@mixin button-variant( $_color, $_bg, $_border, $_colorHover: $_color, $_bgHover: darken( $_bg, 10% ), 
+	$_borderHover: darken( $_bg, 10% ) ){ 
+		border-color: $_border;
+		color: $_color;
+		background-color: $_bg;
+
+	&:hover, 
+	&:focus, 
+	&:active, 
+	&.active, 
+	.open > &.dropdown-toggle { 
+		border-color: $_borderHover;
+		color: $_colorHover;
+		background-color: $_bgHover;
+	}
+
+	&:active, 
+	&.active, 
+	.open > &.dropdown-toggle { background-image: none;}
+
+	&.disabled, 
+	&[disabled], 
+	fieldset[disabled] & { 
+		&,
+		&:hover,
+		&:focus,
+		&:active,
+		&.active { 
+			border-color: $_borderHover;
+			color: $_colorHover;
+			background-color: $_bg;
+		}
+	}
+
+	.badge { 
+		color: $_bg;
+		background-color: $_color;
+	}
+}
+
+
+// 
+// Knockout
+// ----------------------------------------
+
+@mixin button-knockout( $_color: $white, $_bg: $brand-primary, $_border: $_bg ){ 
+	color: $_bg;
+	background-color: transparent;
+	border-color: $_border;
+
+	&:focus, 
+	&.focus { 
+		color: $_color;
+		background-color: $_bg;
+		border-color: $_border;
+	}
+
+	&:hover { 
+		color: $_color;
+		background-color: darken( $_bg, 10% );
+		border-color: darken( $_border, 10% );
+	}
+
+	&:active, 
+	&.active, 
+	.open > &.dropdown-toggle { 
+		color: $_color;
+		background-color: darken( $_bg, 10% );
+		border-color: darken( $_border, 10% );
+
+		&:hover, 
+		&:focus, 
+		&.focus { 
+			color: $_color;
+			background-color: darken( $_bg, 20% );
+			border-color: darken( $_border, 20% );
+		}
+	}
+
+	&:active,
+	&.active,
+	.open > &.dropdown-toggle { background-image: none;}
+
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & { 
+		&, 
+		&:hover, 
+		&:focus, 
+		&.focus, 
+		&:active, 
+		&.active { 
+			background-color: $_bg;
+			border-color: $_border;
+		}
+	}
+
+	.badge { 
+		color: $_color;
+		background-color: $_bg;
+	}
+}

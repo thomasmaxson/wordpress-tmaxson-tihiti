@@ -1,0 +1,147 @@
+// 
+// Curriculum Vitae
+// --------------------------------------------------
+
+.cv { 
+	position: relative;
+	padding-bottom: $content-padding-half;
+	margin-bottom: $content-margin;
+
+	&:before { 
+		content: "";
+		@include absolute( 25px, null, 0, 0 );
+		width: 2px;
+		@include background-rgb( $brand-primary );
+		z-index: 1;
+	}
+
+	&:after { 
+		content: "";
+		@include absolute( null, null, 0, -6px );
+		@include size( 14px, 2px );
+		@include background-rgb( $brand-primary );
+	}
+}
+
+.cv-block { 
+	position: relative;
+	padding: $content-padding-half;
+	padding-bottom: 0;
+	border: 1px solid transparent;
+	margin-left: $content-margin;
+	@include material-box-shadow( 0 );
+	@include clearfix;
+
+	&:before, 
+	&:after { 
+		content: '';
+		@include absolute( 13px, null, null, 0 );
+		border-width: 10px;
+		border-style: solid;
+		@include square( 0 );
+		visibility: hidden;
+	}
+
+	&:before { z-index: 0;}
+	&:after { z-index: 1;}
+
+	&:hover, 
+	&:first-child, 
+	&.active { 
+		border: 1px solid $border-color;
+		@include background-rgb( $white );
+		@include material-box-shadow( 1 );
+
+		&:before, 
+		&:after { visibility: visible;}
+
+		&:before { 
+			left: -20px;
+			border-color: transparent $border-color transparent transparent;
+		}
+
+		&:after { 
+			left: -18px;
+			border-color: transparent $white transparent transparent;
+		}
+	}
+
+
+	@include query-desktop { 
+		.csstransitions & { 
+			@include transition( all $transition-duration $transition-timing-function );
+
+			&:before, 
+			&:after { 
+				@include transition( all $transition-duration $transition-timing-function );
+				transition-property: left, visible, box-shadow;
+			}
+
+			&.active { 
+				&:before, 
+				&:after { 
+					@include transition( all $transition-duration $transition-timing-function $transition-duration );
+					transition-property: left, visible, box-shadow;
+				}
+			}
+		}
+	}
+
+	~ .cv-block { margin-top: $content-margin;}
+}
+
+
+.cv-block-heading { 
+	position: relative;
+	margin-bottom: 10px;
+	color: $brand-primary;
+	z-index: 2;
+
+	&:before { 
+		content: "";
+		@include absolute( 1px, null, null, -52px );
+		@include square( 14px );
+		border: 2px solid $brand-primary;
+		border-radius: 50%;
+		@include background-rgb( $white );
+		z-index: 2;
+	}
+
+	~ .cv-block-company { margin-top: -( $content-margin-quarter );}
+}
+
+
+.cv-block-company { 
+	margin-bottom: $content-margin-quarter;
+	@include font-size( $font-size-small );
+}
+
+
+.cv-block-date { 
+	margin-bottom: $content-margin-half;
+	color: $gray;
+	@include font-size( $font-size-small );
+}
+
+
+.cv-block-duration { 
+	position: relative;
+	top: -1px;
+	padding-top: 5px;
+	margin-left: $content-margin-quarter;
+	line-height: 1;
+	@include font-primary( ( $font-size-small - 2 ), book );
+}
+
+
+.cv-block-body { 
+	p, dl, ol, ul { margin-bottom: $content-margin-half;}
+}
+
+
+// Active bullet
+.cv-block:hover .cv-block-heading:before, 
+.cv-block:first-child .cv-block-heading:before, 
+.cv-block.active .cv-block-heading:before { 
+	@include background-rgb( $brand-primary );
+}

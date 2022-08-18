@@ -1,0 +1,44 @@
+// 
+// Skills
+// --------------------------------------------------
+
+.skills { 
+	border: 1px solid $border-color;
+	border-bottom: none;
+	border-left: none;
+	margin-bottom: $content-margin-half;
+	text-align: center;
+	@include material-box-shadow( 1 );
+}
+
+.skill { 
+	padding: 50px 30px;
+	border-bottom: 1px solid $border-color;
+	border-left: 1px solid $border-color;
+//	color: $text-color;
+	@include background-rgb( $white );
+
+	h2, h3, 
+	h4, h5 { 
+		margin: $content-margin-half 0 0;
+		color: $text-color;
+		@include font-primary( $font-size-base, book );
+	}
+
+	i { 
+		position: relative;
+		top: 2px;
+		margin-right: $content-margin-quarter;
+		@include font-size( $font-size-xlarge + 5 );
+	}
+
+	span { 
+		@include font-size( $font-size-xlarge );
+		letter-spacing: 2px;
+
+		&:after { 
+			content: $unicode-percent;
+			margin-left: 3px;
+		}
+	}
+}

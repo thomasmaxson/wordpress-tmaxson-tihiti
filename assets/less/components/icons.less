@@ -1,0 +1,38 @@
+// 
+// Social Icons
+// --------------------------------------------------
+
+.social-icons { 
+	display: inline-block;
+	.list-inline();
+	.clearfix();
+
+	a { 
+		border-width: 2px;
+		.material-box-shadow( 0 );
+		.transition( all @transition-duration @transition-timing-function );
+
+		&:hover { text-decoration: none;}
+	}
+
+	.btn .fa { 
+		left: -1px !important;
+		top: -1px !important;
+	}
+}
+
+
+// 
+// Build :hover state
+// --------------------------------------------------
+
+.buildSocialIcon( @_index ) when ( @_index > 0 ){ 
+	@_site   : extract( @social-sites, @_index );
+	@_brand  : ~"brand-@{_site}";
+
+	.social-icons a.btn-@{_site}:hover { .box-shadow( 0 0 0 5px @@_brand );}
+
+	.buildSocialIcon( ( @_index - 1 ) );
+}
+
+.buildSocialIcon( length( @social-sites ) );

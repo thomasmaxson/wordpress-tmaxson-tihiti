@@ -1,0 +1,76 @@
+// 
+// Fonts
+// --------------------------------------------------
+
+.font( @_size: @font-size-base, @_family: @font-family-sans-serif, @_weight: false ){ 
+	.font-size( @_size );
+	font-family: @_family;
+
+	& when not ( @_weight = false ){ 
+		font-weight: @_weight;
+	}
+}
+
+.font-primary( @_size: @font-size-base, @_type: book, @_weight: false ){ 
+	.font-size( @_size );
+	.font-family-primary( @_type, @_weight );
+}
+
+.font-gentleman( @_size: @font-size-base, @_type: book, @_weight: false ){ 
+	.font-size( @_size );
+	.font-family-gentleman( @_type, @_weight );
+}
+
+
+// 
+// Font Size
+// ----------------------------------------
+
+.font-size( @_size: @font-size-base ){ 
+
+	// Remove unit size (px, em, rem, pt, etc.) from initial value
+	& when not ( isnumber( @_size ) )
+	{ 
+		@_size: parseInt( "@{_size}" );
+
+	} // endwhen
+
+	@_rem-size: ( @_size / 10 );
+
+	font-size: unit( @_size, px );
+	font-size: unit( @_rem-size, rem );
+
+//	.cssremunit & { font-size: unit( ( @size / 10 ), rem );}
+}
+
+
+// 
+// Font Family
+// ----------------------------------------
+
+.font-family-primary( @_size: book, @_weight: false ){ 
+
+	.font-family-gentleman( @_size, @_weight );
+
+}
+
+
+// 
+// Font Family, Gentleman
+// ------------------------------
+
+.font-family-gentleman( @_size: book, @_weight: false ){ 
+
+	@_family: ~"font-family-gentleman-@{_size}";
+
+	& when ( @_weight = true ){ 
+		@_weight: ~"font-family-gentleman-@{_weight}";
+
+		font-family: @@_family;
+		font-weight: @@_weight;
+	}
+
+	& when ( @_weight = false ){ 
+		font-family: @@_family;
+	}
+}

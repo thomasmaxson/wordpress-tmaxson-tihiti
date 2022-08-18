@@ -1,0 +1,51 @@
+.selectbox { 
+	display: block;
+	width: 100%;
+}
+
+input.readonly, input[readonly], 
+textarea.readonly, textarea[readonly] { cursor: not-allowed;}
+
+
+.theme-option-media .media-image:after { 
+	display: block;
+	visibility: hidden;
+	clear: both;
+	content: ".";
+	height: 0;
+	font-size: 0;
+}
+
+.theme-option-media img { 
+	display: inline-block;
+	max-width: 100%;
+	margin-bottom: 10px;
+	vertical-align: middle;
+}
+	.theme-option-media img:after { 
+		display: block;
+		visibility: hidden;
+		clear: both;
+		content: ".";
+		height: 0;
+		font-size: 0;
+	}
+
+.theme-option-media .remove { 
+	display: none;
+	margin-left: 10px;
+	line-height: 28px;
+	vertical-align: middle;
+	text-align: left;
+}
+	.theme-option-media .remove:hover { color: #900;}
+
+	.theme-option-media .media-image ~ .remove { display: inline-block;}
+
+@media screen and (max-width: 782px){
+
+	.theme-option-media .theme-option-media-remove { 
+		line-height: 48px;
+	}
+
+}

@@ -1,0 +1,92 @@
+//
+// Imports
+// --------------------------------------------------
+
+@import "mixins/_prefix";
+@import "mixins/_directional-property";
+@import "mixins/_media-queries";
+
+@import "mixins/_animation";
+@import "mixins/_backface-visibility";
+@import "mixins/_background";
+@import "mixins/_box-shadow";
+@import "mixins/_button";
+@import "mixins/_color";
+@import "mixins/_cursor";
+// @import "mixins/_flexbox";
+@import "mixins/_filter";
+@import "mixins/_long-shadow";
+@import "mixins/_ribbon";
+@import "mixins/_triangle";
+@import "mixins/_typography";
+@import "mixins/_position";
+@import "mixins/_pseudo";
+
+
+//
+// Mixins
+// --------------------------------------------------
+// 
+// CSS3 Translate
+// ----------------------------------------
+
+@mixin translateX( $_x ){  
+	@include prefix( transform, translateX( $_x ) );
+}
+
+@mixin translateY( $_y ){ 
+	@include prefix( transform, translateY( $_y ) );
+}
+
+
+// 
+// Panel Progress Variant
+// ----------------------------------------
+
+@mixin panel-progress-variant( $_color: $text-color ){ 
+
+	.panel-progress-counter { 
+		@include background-rgb( $_color );
+	}
+
+	.progress-bar { @include background-rgb( $_color );}
+}
+
+
+// 
+// Timeline Variant
+// ----------------------------------------
+
+@mixin timeline-variant( $_color: $text-color, $_background: $white ){ 
+
+	.timeline-marker { 
+		color: $_color;
+		@include background-rgb( $_background );
+	}
+
+	.timeline-panel { 
+		color: $_color;
+		@include background-rgb( $_background );
+
+		&:before { border-right-color: $_background;}
+
+		&:after { @include background-rgb( $_background );}
+
+		&:hover:after { 
+			border-color: $timeline-bullet-bg-hover-color;
+			@include background-rgb( $timeline-bullet-bg-hover-color );
+		}
+
+		@media ( min-width: $grid-float-breakpoint ){ 
+			&.left:before { 
+				border-left-color: $_background;
+				border-right: transparent;
+			}
+
+			&.right:before { border-right-color: $_background;}
+		}
+
+		.timeline-headline { color: $_color;}
+	}
+
+}

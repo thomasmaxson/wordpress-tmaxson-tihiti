@@ -1,0 +1,35 @@
+// 
+// Long Shadow
+// --------------------------------------------------
+
+@mixin long-shadow( $_direction, $_length, $_color, $_fade: false, $_shadow-count: 100 ){ 
+	$_shadows: ();
+	$_conversion-map: ( 
+		top          : 180deg, 
+		top right    : 135deg, 
+		right top    : 135deg, 
+		right        : 90deg, 
+		bottom right : 45deg, 
+		right bottom : 45deg, 
+		bottom       : 0deg, 
+		bottom left  : 315deg, 
+		left bottom  : 315deg, 
+		left         : 270deg, 
+		left top     : 225deg, 
+		top left     : 225deg
+	);
+
+	@if map-has-key( $_conversion-map, $_direction ){ 
+		$_direction: map-get( $_conversion-map, $_direction );
+	}
+
+	@for $_i from 1 through $_shadow-count { 
+		$_current-step: ( $_i * $_length / $_shadow-count );
+
+		$_current-color: if( not $_fade, $_color, if( type-of( $_fade ) == 'color',  mix( $_fade, $_color, ( $_i / $_shadow-count * 100 ) ), rgba( $_color, 1 - $_i / $_shadow-count ) ) );
+
+		$_shadows: append( $_shadows, ( sin( 0deg + $_direction ) * $_current-step ) ( cos( 0deg + $_direction ) * $_current-step ) 0 $_current-color, 'comma' );
+	}
+
+	text-shadow: $_shadows;
+}

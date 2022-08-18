@@ -1,0 +1,40 @@
+#wpadminbar { position: fixed !important;}
+
+
+// WordPress Defaults
+// ------------------------------------
+
+.sticky { outline: none;}
+
+.bypostauthor { outline: none;}
+
+.emoji, 
+.wp-smiley { 
+	margin: 0 !important;
+	max-height: 1em;
+}
+
+#wpstats { display: none !important;}
+
+
+// WordPress Alignment
+// ------------------------------------
+
+.alignleft { 
+	float: left;
+
+	img& { margin: 0 @content-margin @content-margin 0;}
+}
+
+.alignright { 
+	float: right;
+
+	img& { margin: 0 0 @content-margin @content-margin;}
+}
+
+.aligncenter { 
+	display: block;
+	float: none;
+	margin: 0 auto @content-margin;
+	clear: both;
+}

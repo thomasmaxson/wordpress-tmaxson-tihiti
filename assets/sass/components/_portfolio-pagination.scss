@@ -1,0 +1,77 @@
+// 
+// Pagination
+// --------------------------------------------------
+
+.pagination { 
+	display: block;
+	padding: 0;
+	margin: 0;
+	@include clearfix;
+}
+
+.pagination-list { 
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0;
+	margin: 0;
+
+	li { flex-basis: 50%;}
+
+	a { 
+		position: relative;
+		display: block;
+		width: 100%;
+		line-height: $content-margin-double;
+		text-align: center;
+		overflow: hidden;
+		outline: none;
+
+		@include link( $text-color, $brand-primary, $brand-primary, $brand-primary, null );
+	}
+
+	.nav-back { 
+		flex-basis: 100%;
+		order: 1;
+		border-bottom: 1px solid $border-color;
+	}
+
+	.page-prev { 
+		order: 2;
+		border-bottom: 1px solid $border-color;
+	}
+
+	.page-next { 
+		order: 3;
+		border-bottom: 1px solid $border-color;
+		border-left: 1px solid $border-color;
+	}
+
+
+	@include query-screen-xs-up { 
+		flex-wrap: nowrap;
+
+		li + li { margin-left: -5px !important;}
+
+		a { line-height: ( $content-margin-double + $content-margin );}
+
+		.nav-back, 
+		.page-prev, 
+		.page-next { 
+			order: initial;
+			border: none;
+		}
+
+		.nav-back { 
+			flex-basis: ( $content-margin-double + $content-margin );
+			border-right: 1px solid $border-color;
+			border-left: 1px solid $border-color;
+		}
+	}
+
+
+	@include query-desktop { 
+		.nav-back, 
+		.page-prev, 
+		.page-next { flex-basis: 33.33333%;}
+	}
+}

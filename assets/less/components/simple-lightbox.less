@@ -1,0 +1,45 @@
+// 
+// Lightbox, Simple
+// --------------------------------------------------
+
+.sl-wrapper .sl-navigation { 
+
+	@_simple-arrow-mobile-offset         : 0;
+	@_simple-arrow-mobile-offset-active  : ( @_simple-arrow-mobile-offset - 5px );
+
+	@_simple-arrow-desktop-offset        : 0;
+	@_simple-arrow-desktop-offset-active : ( @_simple-arrow-desktop-offset - 10px );
+
+	button { 
+	//	.color( @white );
+		.font-size( 45px );
+	//	text-shadow: 0 0 10px @text-color;
+		.transition( all @transition-duration @transition-timing-function );
+		outline: none;
+
+		&.sl-prev { 
+			left: @_simple-arrow-mobile-offset;
+
+			&:active { left: @_simple-arrow-mobile-offset-active;}
+
+			@media @query-screen and @query-desktop { 
+				left: @_simple-arrow-desktop-offset;
+
+				&:active { left: @_simple-arrow-desktop-offset-active;}
+			}
+		}
+
+
+		&.sl-next { 
+			right: @_simple-arrow-mobile-offset;
+
+			&:active { right: @_simple-arrow-mobile-offset-active;}
+
+			@media @query-screen and @query-desktop { 
+				right: @_simple-arrow-desktop-offset;
+
+				&:active { right: @_simple-arrow-desktop-offset-active;}
+			}
+		}
+	}
+}

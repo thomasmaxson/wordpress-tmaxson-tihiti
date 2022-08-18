@@ -1,0 +1,141 @@
+//
+// Imports
+// --------------------------------------------------
+
+@import "mixins/background.less";
+@import "mixins/buttons.less";
+// @import "mixins/flexbox.less";
+@import "mixins/typography.less";
+@import "mixins/position.less";
+@import "mixins/prefix.less";
+
+
+//
+// Mixins
+// --------------------------------------------------
+// 
+// Colors
+// ----------------------------------------
+
+.color( @_color: @black ){ 
+	color: @_color;
+	color: rgb( red( @_color ), green( @_color ), blue( @_color ) );
+}
+
+
+// 
+// Link
+// ----------------------------------------
+
+.link( @_color: @text-color, @_colorHover: @brand-primary ){ 
+	color: @_color;
+	
+	&:hover, 
+	&:focus { color: @_colorHover;}
+}
+
+
+// 
+// CSS3 Translate
+// ----------------------------------------
+
+.translateX( @_x ){ 
+	-webkit-transform: translateX( @_x );
+		-ms-transform: translateX( @_x ); // IE9 only
+		 -o-transform: translateX( @_x );
+			transform: translateX( @_x );
+}
+
+.translateY( @_y ){ 
+	-webkit-transform: translateY( @_y );
+		-ms-transform: translateY( @_y ); // IE9 only
+		 -o-transform: translateY( @_y );
+			transform: translateY( @_y );
+}
+
+
+//
+// Box Shadow
+// ----------------------------------------
+
+.material-box-shadow( @_depth: 1, @_hshadow: 0, @_vshadow: 2px, @_blur: 5px, @_spread: 0 ){ 
+
+	@_box-shadow-color: @black;
+
+	& when ( @_depth = 0 ){ 
+		.box-shadow( @_hshadow @_vshadow @_blur @_spread transparent );
+	}
+
+	& when ( @_depth = 1 ){ 
+		.box-shadow( @_hshadow @_vshadow @_blur @_spread fade( @_box-shadow-color, 15 ) );
+	}
+
+	& when ( @_depth = 2 ){ 
+		.box-shadow( @_hshadow @_vshadow @_blur @_spread fade( @_box-shadow-color, 25 ) );
+	}
+
+	& when ( @_depth = 3 ){ 
+		.box-shadow( @_hshadow @_vshadow @_blur @_spread fade( @_box-shadow-color, 35 ) );
+	}
+
+	& when ( @_depth = 4 ){ 
+		.box-shadow( @_hshadow @_vshadow @_blur @_spread fade( @_box-shadow-color, 45 ) );
+	}
+
+	& when ( @_depth = 5 ){ 
+		.box-shadow( @_hshadow @_vshadow @_blur @_spread fade( @_box-shadow-color, 55 ) );
+	}
+}
+
+
+// 
+// Panel Progress Variant
+// ----------------------------------------
+
+.panel-progress-variant( @color: @text-color ){ 
+
+	.panel-progress-counter { 
+		.background-rgb( @color );
+	}
+
+	.progress-bar { .background-rgb( @color );}
+}
+
+
+// 
+// Timeline Variant
+// ----------------------------------------
+
+.timeline-variant( @color: @text-color, @background: @white ){ 
+
+	.timeline-marker { 
+		color: @color;
+		.background-rgb( @background );
+	}
+
+	.timeline-panel { 
+		color: @color;
+		.background-rgb( @background );
+
+		&:before { border-right-color: @background;}
+
+		&:after { .background-rgb( @background );}
+
+		&:hover:after { 
+			border-color: @timeline-bullet-bg-hover-color;
+			.background-rgb( @timeline-bullet-bg-hover-color );
+		}
+
+		@media @query-mobile { 
+			&.left:before { 
+				border-left-color: @background;
+				border-right: transparent;
+			}
+
+			&.right:before { border-right-color: @background;}
+		}
+
+		.timeline-headline { color: @color;}
+	}
+
+}

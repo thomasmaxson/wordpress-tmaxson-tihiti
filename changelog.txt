@@ -1,0 +1,65 @@
+== Changelog ==
+
+= 1.9 16-Jan-2020 =
+* Added enqueued FontAwesome-Kit script
+* Removed enqueued FontAwesome style
+
+
+= 1.8 04-Nov-2019 =
+* Consolidated template tags
+* Added the following functions:
+** maxson_get_intro_section()
+
+
+= 1.7 07-Oct-2019 =
+* Added theme support for "maxson-content-options" project details
+* Added HTML5 <picture> tag support
+* Added the following functions:
+** maxson_build_html_output()
+** maxson_build_html_attributes()
+** maxson_build_html_open_tag()
+** maxson_build_html_close_tag()
+** maxson_get_social_icon_details()
+** maxson_query_social_icon_details_via_url()
+* Modified how social media menu displays
+* Modified how maxson_get_cta_button() is shown and constructed
+* Modified how contact button in header is added and styled
+
+
+= 1.6 23-Feb-2018 =
+* Remove jQuery fallback script
+* Added distraction free writing width (set_user_setting = dfw_width)
+
+
+= 1.5 11-Dec-2017 =
+* Added theme support to hide #wpstats smiley in footer
+
+
+= 1.4 14-Sep-2017 =
+* Added theme support for default custom logo
+* Added customizer setting for inverse custom logo
+
+
+= 1.3 09-Sep-2017 =
+* Added theme support for "maxson-content-options" post details
+* Added customizer control: Maxson_Customize_Arbitrary_Control
+* Added customizer control: Maxson_Customize_Checkbox_Toggle_Control
+* Added customizer control: Maxson_Customize_Checkbox_Sortable_Control
+* Added customizer control: Maxson_Customize_Dropdown_Posts_Control
+* Added customizer control: Maxson_Customize_Dropdown_Terms_Control
+* Added customizer control: Maxson_Customize_Dropdown_Users_Control
+* Added customizer control: Maxson_Customize_Radio_Image_Control
+* Added customizer control: Maxson_Customize_Range_Control
+
+
+= 1.2 18-Aug-2017 =
+* Migrate theme options to theme customizer
+
+
+= 1.1 03-Aug-2017 =
+* Convert styles to SASS
+* Add additional options to theme customizer
+
+
+= 1.0 17-Jun-2015 =
+* Initial release

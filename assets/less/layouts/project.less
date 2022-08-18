@@ -1,0 +1,74 @@
+// 
+// Project
+// --------------------------------------------------
+
+.single-project { 
+	@media-margin-bottom: ( @content-margin-half + @content-margin-quarter );
+
+	.portfolio-project-thumbnail { 
+		img { 
+			border: 1px solid @border-color;
+			margin-bottom: @media-margin-bottom;
+		}
+	}
+
+	.project-gallery { 
+		margin-bottom: @media-margin-bottom;
+
+		a { cursor: zoom-in;}
+	}
+
+	.project-video { 
+		.embed-responsive();
+		margin-bottom: @media-margin-bottom;
+		.embed-responsive-16by9();
+
+		&.video-is-4by3 { .embed-responsive-4by3();}
+	//	&.video-is-16by9 { .embed-responsive-16by9();}
+
+		.wp-video { margin: 0 auto;}
+	}
+}
+
+
+.project-overview { 
+
+	// Desktop ONLY
+	@media @query-screen and @query-desktop { 
+		padding-right: @content-padding;
+		border-right: 1px solid @border-color;
+		margin-right: -1px;
+	}
+}
+
+
+.project-details { 
+	.list-unstyled();
+	padding-top: @content-padding;
+	border-top: 1px solid @border-color;
+
+	li { .clearfix();}
+
+	.project-detail-label { .font-family-primary( bold );}
+
+	p { margin-bottom: @content-margin-half;}
+
+	// Small Screen ONLY
+	@media @query-screen and @query-sm-up {  
+		padding: @content-padding;
+		padding-bottom: @content-padding-half;
+		border: 1px solid @border-color;
+		margin-top: 0;
+		margin-bottom: @content-margin;
+	}
+
+	// Desktop ONLY
+	@media @query-screen and @query-desktop { 
+		padding: 0;
+		padding-left: @content-padding;
+		border: none;
+		border-left: 1px solid @border-color;
+		margin-bottom: 0;
+		margin-left: -( @content-margin );
+	}
+}

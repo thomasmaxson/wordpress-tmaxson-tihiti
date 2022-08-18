@@ -1,0 +1,122 @@
+// 
+// Lists
+// --------------------------------------------------
+// 
+// List, Bullet Types
+// --------------------------------------------------
+
+.list-disc { list-style: disc;}
+
+.list-circle { list-style: circle;}
+
+.list-square { list-style: square;}
+
+.list-upper-latin, 
+.list-upper-alpha { list-style: lower-alpha;}
+
+.list-lower-latin, 
+.list-lower-alpha { list-style: upper-alpha;}
+
+.list-upper-roman { list-style: upper-roman;}
+
+.list-lower-roman { list-style: lower-roman;}
+
+
+// 
+// List, Space
+// --------------------------------------------------
+
+.list-space > li + li { margin-top: $content-margin-half;}
+
+
+// 
+// List, Inline
+// --------------------------------------------------
+
+$_list-inline-margin:                      $content-margin;
+$_list-inline-padding:                     $_list-inline-margin;
+
+$_list-inline-margin-collapse:             0;
+$_list-inline-padding-collapse:            $_list-inline-margin-collapse;
+
+$_list-inline-margin-narrow:               $content-margin-quarter;
+$_list-inline-padding-narrow:              $_list-inline-margin-narrow;
+
+$_list-inline-margin-thin:                 $content-margin-half;
+$_list-inline-padding-thin:                $_list-inline-margin-thin;
+
+$_list-inline-margin-thick:                ( $content-margin + $content-margin-half );
+$_list-inline-padding-thick:               $_list-inline-margin-thick;
+
+$_list-inline-margin-wide:                 $content-margin-double;
+$_list-inline-padding-wide:                $_list-inline-margin-wide;
+
+$_list-inline-bullet-size:                 4px;
+
+$list-inline-bullet-color:                 $border-color;
+$list-inline-pipe-color:                   $border-color;
+
+$_list-inline-inline-block-offset:         4px;
+
+ 
+@mixin list-inline { 
+ 	@include list-unstyled;
+
+ 	> li { 
+		position: relative;
+		display: inline-block;
+
+		+ li { margin-left: $_list-inline-margin;}
+	}
+}
+
+
+.list-inline {
+	@include list-inline;
+
+	&.list-inline-collapse > li + li { margin-left: $_list-inline-margin-collapse;}
+	&.list-inline-narrow > li + li   { margin-left: $_list-inline-margin-narrow;}
+	&.list-inline-thin > li + li     { margin-left: $_list-inline-margin-thin;}
+	&.list-inline-thick > li + li    { margin-left: $_list-inline-margin-thick;}
+	&.list-inline-wide > li + li     { margin-left: $_list-inline-margin-wide;}
+
+
+	&.list-inline-bullet, 
+	&.list-inline-pipe { 
+		> li + li { padding-left: ( $_list-inline-padding + $_list-inline-inline-block-offset );}
+
+		&.list-inline-narrow > li + li { padding-left: $_list-inline-padding-narrow;}
+		&.list-inline-thin > li + li   { padding-left: $_list-inline-padding-thin;}
+		&.list-inline-thick > li + li  { padding-left: $_list-inline-padding-thick;}
+		&.list-inline-wide > li + li   { padding-left: $_list-inline-padding-wide;}
+
+	//	> li + li { padding-left: ( $_list-inline-padding + $_list-inline-inline-block-offset );}
+
+	//	&.list-inline-narrow > li + li { padding-left: ( $_list-inline-padding-narrow + $_list-inline-inline-block-offset );}
+	//	&.list-inline-thin > li + li   { padding-left: ( $_list-inline-padding-thin + $_list-inline-inline-block-offset );}
+	//	&.list-inline-thick > li + li  { padding-left: ( $_list-inline-padding-thick + $_list-inline-inline-block-offset );}
+	//	&.list-inline-wide > li + li   { padding-left: ( $_list-inline-padding-wide + $_list-inline-inline-block-offset );}
+	}
+
+
+	&.list-inline-bullet > li + li:before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: -( floor( $_list-inline-bullet-size / 2 ) );
+		margin-top: -( floor( $_list-inline-bullet-size / 2 ) );
+		border-radius: 50%;
+		@include square( $_list-inline-bullet-size );
+		background-color: $list-inline-bullet-color;
+		@include translate( 0, -50% );
+	}
+
+	&.list-inline-pipe > li + li:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		border-left: 1px solid $list-inline-pipe-color;
+	}
+}

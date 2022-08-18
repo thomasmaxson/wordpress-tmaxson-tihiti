@@ -1,0 +1,203 @@
+// 
+// Position
+// --------------------------------------------------
+
+@mixin position( $_type, $_trbl-values... ){ 
+	$_allowed_position_types: absolute fixed relative static null !default;
+
+	@if not index( $_allowed_position_types, $_type ){ 
+		@error "`#{$_type}` is not a valid type for `position`.";
+
+	} @else if $_type != null { 
+		position: $_type;
+
+	}
+
+	@include trbl( $_trbl-values... );
+}
+
+
+// 
+// Static
+// ----------------------------------------
+
+@mixin static( $_trbl-values... ) { 
+	@include position( static, $_trbl-values... );
+}
+
+
+// 
+// Relative
+// ----------------------------------------
+
+@mixin relative( $_trbl-values... ) { 
+	@include position( relative, $_trbl-values... );
+}
+
+
+// 
+// Absolute
+// ----------------------------------------
+
+@mixin absolute( $_trbl-values... ) { 
+	@include position( absolute, $_trbl-values... );
+}
+
+
+// 
+// Fixed
+// ----------------------------------------
+
+@mixin fixed( $_trbl-values... ) { 
+	@include position( fixed, $_trbl-values... );
+}
+
+
+// 
+// Top Right Bottom Left
+// ----------------------------------------
+
+@mixin trbl( $_trbl-values... ) { 
+	$_trbl-values: _unpack-shorthand( $_trbl-values... );
+
+	$_offsets: ( 
+		top:    nth( $_trbl-values, 1 ), 
+		right:  nth( $_trbl-values, 2 ), 
+		bottom: nth( $_trbl-values, 3 ), 
+		left:   nth( $_trbl-values, 4 )
+	);
+
+	@each $_offset, $_value in $_offsets { 
+		@if _is-length( $_value ){ 
+			#{$_offset}: $_value;
+		}
+	}
+}
+
+
+// 
+// Position, Top Left
+// ------------------------------
+
+@mixin top-left { 
+	@include trbl( 0, null, null, 0 );
+}
+
+
+// 
+// Position, Top Right
+// ------------------------------
+
+@mixin top-right { 
+	@include trbl( 0, 0, null, null );
+}
+
+
+// 
+// Position, Bottom Right
+// ------------------------------
+
+@mixin bottom-right { 
+	@include trbl( null, 0, 0, null );
+}
+
+
+// 
+// Position, Bottom Left
+// ------------------------------
+
+@mixin bottom-left { 
+	@include trbl( null, null, 0, 0 );
+}
+
+
+// 
+// Absolute Center
+// ----------------------------------------
+
+@mixin absolute-center { 
+	@include position( absolute, 50%, null, null, 50% );
+	@include translate( -50%, -50% );
+}
+
+
+// 
+// Vertical Center
+// ----------------------------------------
+
+@mixin vertical-align( $_align: middle, $_offset: 0, $_height: null ) { 
+	@if $_align == top { 
+		@include absolute( $_offset, null, null, null );
+
+	} @else if $_align == middle { 
+		@include absolute( 50%, null, null, null );
+
+
+	} @else if $_align == bottom { 
+		@include absolute( null, null, $_offset, null );
+
+	}
+
+	@if $_height != null { 
+		height: $_height;
+		margin-top: -( $_offset - round( $_height / 2 ) );
+
+	} @else { 
+		@include translateY( -50% );
+
+		@if _is-number( $_offset ) { 
+			margin-top: $_offset - round( $_height / 2 );
+
+		}
+	}
+}
+ 
+
+// 
+// Horizontal Center
+// ----------------------------------------
+
+@mixin horizontal-align( $_align: center, $_offset: 0, $_width: null ) { 
+	@if $_align == left { 
+		@include absolute( null, null, null, $_offset );
+
+	} @else if $_align == center { 
+		@include absolute( null, null, null, 50% );
+
+
+	} @else if $_align == right { 
+		@include absolute( null, $_offset, null, null );
+
+	}
+
+	@if $_width != null { 
+		height: $_width;
+		margin-left: -( $_offset - round( $_width / 2 ) );
+
+	} @else { 
+		@include translateX( -50% );
+
+		@if _is-number( $_offset ) { 
+			margin-top: $_offset - round( $_width / 2 );
+
+		}
+	}
+}
+
+
+// 
+// Center
+// ----------------------------------------
+
+@mixin center( $_direction, $_offset: 0, $_size: null ){ 
+	@if $_direction == both { 
+		@include absolute-center;
+
+	} @else if $_direction == horizontal { 
+		@include horizontal-align( center, $_offset, $_size );
+
+	} @else if $_direction == vertical { 
+		@include vertical-align( middle, $_offset, $_size );
+
+	}
+}

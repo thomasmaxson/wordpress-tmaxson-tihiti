@@ -1,0 +1,95 @@
+// 
+// Color
+// --------------------------------------------------
+
+@mixin color( $_color: $text-color, $_alpha: 1.0 ){ 
+	@if _is-color( $_color ) { 
+		$_alpha_color: hsla( hue( $_color ), saturation( $_color ), lightness( $_color ), $_alpha );
+
+		color: $_color;
+		color: $_alpha_color;
+
+	} @else { 
+		@if true == $_debug { 
+			@warn "`#{$_color}` is not a valid color.";
+		}
+
+	}
+}
+
+
+// 
+// Link
+// ----------------------------------------
+
+@mixin link( $_color: $brand-primary, 
+	$_hover: darken( $_color, 10% ), 
+	$_active: null, 
+	$_focus: $_hover, 
+	$_visited: $_color ){ 
+
+	@include color( $_color );
+
+	@if _is-color( $_hover ){ 
+		&:hover { @include color( $_hover );}
+	}
+
+	@if _is-color( $_focus ){ 
+		&:focus { @include color( $_focus );}
+	}
+
+	@if _is-color( $_active ){ 
+		&:active { @include color( $_active );}
+	}
+
+	@if _is-color( $_visited ){ 
+		&:visited { @include color( $_visited );}
+	}
+}
+
+
+// 
+// Tint
+// ----------------------------------------
+
+/* @mixin tint( $_color: $brand-primary, $_percent: 100 ){ 
+	@return mix( $white, $_color, $_percent);
+} */
+
+
+// 
+// Shade
+// ----------------------------------------
+
+/* @mixin shade( $_color: $brand-primary, $_percent: 100 ){ 
+	@return mix( $black, $_color, $_percent);
+} */
+
+
+// 
+// Generate a Random Color
+// ----------------------------------------
+
+/* @mixin random_color( $_min: 0, $_max: 255, $_alpha: 1 ){ 
+	@if $_min < 0 { 
+		$_min: -1;
+
+	} @else { 
+		$_min: $_min - 1;
+
+	}
+
+	@if $_max > 255 { 
+		$_max: 256;
+
+	} @else { 
+		$_max: $_max + 1;
+
+	}
+
+	$_red: random( $_max ) + $_min;
+	$_green: random( $_max ) + $_min;
+	$_blue: random( $_max ) + $_min;
+
+	@return rgba( $_red, $_green, $_blue, $_alpha );
+} */

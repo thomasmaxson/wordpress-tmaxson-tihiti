@@ -1,0 +1,19 @@
+// 
+// Transforms shorthand that can range from 1-to-4 values to be 4 values
+// --------------------------------------------------
+
+@function _unpack-shorthand( $_shorthand... ){ 
+	@if length( $_shorthand ) == 1 { 
+		@return nth( $_shorthand, 1 ) nth( $_shorthand, 1 ) nth( $_shorthand, 1 ) nth( $_shorthand, 1 );
+
+	} @else if length( $_shorthand ) == 2 { 
+		@return nth( $_shorthand, 1 ) nth( $_shorthand, 2 ) nth( $_shorthand, 1 ) nth( $_shorthand, 2 );
+
+	} @else if length( $_shorthand ) == 3 { 
+		@return nth( $_shorthand, 1 ) nth( $_shorthand, 2 ) nth( $_shorthand, 3 ) nth( $_shorthand, 2 );
+
+	} @else { 
+		@return $_shorthand;
+
+	}
+}

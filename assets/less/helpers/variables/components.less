@@ -1,0 +1,213 @@
+//
+// Components
+// --------------------------------------------------
+
+@boostrap-states:                          primary, default, success, info, warning, danger;
+@social-sites:                             behance, codepen, dropbox, facebook, flickr, github, google-plus, instagram, linkedin, pinterest, twitter, vimeo, youtube;
+
+
+// 
+// Horizontal Rule
+// ----------------------------------------
+
+@hr-border:                                @border-color;
+
+
+//
+// Buttons
+// ----------------------------------------
+//
+// Secondary Color
+// ------------------------------
+
+@btn-secondary-color:                      @text-color;
+@btn-secondary-bg:                         @gray-lighter;
+@btn-secondary-border:                     @btn-secondary-bg;
+
+
+// 
+// Borders
+// ----------------------------------------
+
+@border-width:                             1px;
+
+@border-color:                             @gray-light;
+@border-color-light:                       lighten( @border-color, 10% );
+@border-color-dark:                        darken( @border-color, 10% );
+
+
+//
+// Media
+// ----------------------------------------
+//
+// Thumbnails (Images)
+// ------------------------------
+
+@thumbnail-border-radius:                  0;
+
+
+//
+// Header Navbar
+// ----------------------------------------
+
+@navbar-height:                            60px;
+
+@navbar-padding-horizontal:                @content-padding-half;
+@navbar-padding-vertical:                  10px;
+
+@navbar-margin-bottom:                     0;
+@navbar-border-radius:                     0;
+
+@navbar-default-color:                     @white;
+@navbar-default-bg:                        @brand-primary;
+@navbar-default-border:                    @brand-primary;
+
+@navbar-default-link-color:                @navbar-default-color;
+@navbar-default-link-hover-color:          @white;
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         @white;
+@navbar-default-link-active-bg:            transparent;
+
+@navbar-height-total:                      ( @navbar-height + ( @content-padding-quarter * 1 ) );
+
+
+//
+// Navbar Toggle
+// ----------------------------------------
+
+@navbar-default-toggle-hover-bg:           transparent;
+@navbar-default-toggle-icon-bar-bg:	       @navbar-default-color;
+@navbar-default-toggle-border-color:       @navbar-default-color;
+
+@navbar-toggle-rotate-speed:               1;
+@navbar-toggle-top-offset:                 6px;
+
+@navbar-toggle-rotate:                     ( ( ( @navbar-toggle-rotate-speed / 4 ) * 360 ) + 45deg );
+
+
+// 
+// Footer
+// ----------------------------------------
+
+@footer-mobile-height:                     155px;
+@footer-height:                            105px;
+
+
+// Social Icons
+// ----------------------------------------
+
+@social-icon-mobile-size:                  32px;
+@social-icon-size:                         40px;
+
+@social-icon-color:                        rgba( 255, 255, 255, 0.6 );
+@social-icon-hover-color:                  @white;
+
+
+//
+// Forms
+// ----------------------------------------
+
+@input-color:                              @text-color;
+
+@input-color:                              @text-color;
+@input-color-placeholder:                  @gray-light;
+
+@input-border:                             @border-color;
+@input-border-focus:                       darken( @border-color, 20% );;
+
+@input-border-radius:                      0;
+@input-border-radius-large:                @input-border-radius;
+@input-border-radius-small:                @input-border-radius;
+
+@form-group-margin-bottom:                 @content-margin;
+
+@legend-color:                             @text-color;
+@legend-border-color:                      @border-color;
+
+@input-group-addon-bg:                     @white;
+
+@textarea-row-count:                       2;
+
+@input-icon-width:                         50px;
+@input-icon-height:                        40px;
+
+
+//
+// Alerts
+// ----------------------------------------
+
+@alert-border-radius:                      0;
+
+@alert-success-text:                       @white;
+@alert-info-text:                          @white;
+@alert-warning-text:                       @white;
+@alert-danger-text:                        @white;
+
+
+//
+// Blockquotes
+// ----------------------------------------
+
+@blockquote-small-color:                   @text-color;
+@blockquote-font-size:                     @font-size-medium;
+@blockquote-border-color:                  transparent;
+
+
+//
+// Buttons
+// ----------------------------------------
+
+@btn-default-color:                        @white;
+@btn-default-bg:                           @brand-default;
+@btn-default-border:                       darken( @btn-default-bg, 5% );
+
+@btn-primary-border:                       @btn-primary-bg;
+@btn-success-border:                       @btn-success-bg;
+@btn-info-border:                          @btn-info-bg;
+@btn-warning-border:                       @btn-warning-bg;
+@btn-danger-border:                        @btn-danger-bg;
+
+
+//
+// Panels
+// ----------------------------------------
+
+@panel-bg:                                 @body-bg;
+@panel-border-radius:                      0;
+
+@panel-heading-padding:                    @content-margin @content-margin 0;
+@panel-body-padding:                       @content-margin @content-margin 0;
+@panel-footer-padding:                     @content-margin @content-margin 0;
+
+
+@panel-inner-border:                       transparent;
+@panel-footer-bg:                          @body-bg;
+
+@panel-default-text:                       @text-color;
+@panel-default-border:                     @border-color;
+@panel-default-heading-bg:                 @body-bg;
+
+
+//
+// Progress Bars
+// ----------------------------------------
+
+@progress-border-radius:                   0;
+@progress-bg:                              @gray-lightest;
+
+@progress-bar-color:                       @white;
+@progress-bar-bg:                          @gray-darker;
+
+
+//
+// Map Controls
+// ----------------------------------------
+
+
+// @map-control-icon-size-small:           @content-margin;
+// @map-control-icon-size:                 ( @content-margin + @content-margin-quarter );
+// @map-control-icon-size-large:           ( @content-margin + @content-margin-half );
+
+// @map-control-icon-border-color:         @border-color;
+// @map-control-icon-color:                @text-color;
+// @map-control-icon-bg-color:             @white;

@@ -1,0 +1,19 @@
+// 
+// Slice `$_list` between `$_start` and `$_end` indexes
+// --------------------------------------------------
+
+@function _slice( $_list, $_start: 1, $_end: length( $_list ) ){ 
+	@if length( $_list ) < 1 or $_start > $_end { 
+		@return ();
+
+	}
+
+	$result: ();
+
+	@for $i from $_start through $_end { 
+		$result: append( $result, nth( $_list, $i ) );
+
+	}
+
+	@return $result;
+}

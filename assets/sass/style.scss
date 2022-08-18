@@ -1,0 +1,33 @@
+/*!
+ * Theme Name: Thomas Maxson - v3
+ * Author: Thomas Maxson
+ * Author URI: http://thomasmaxson.com/
+ * Description: Premium WordPress theme by Thomas Maxson.
+ * Version: 1.7
+ * 
+ * License: GNU General Public License v2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Tags: White, light, two-columns, three-columns, left-sidebar, right-sidebar, responsive-layout, custom-menu, editor-style, featured-images, theme-options, translation-ready, accessibility-ready
+ * Text Domain: maxson
+ * 
+ *  Font Awesome 5.2.0 https://fontawesome.com/
+ */
+
+// Functions
+@import "helpers/_functions";
+
+// Core variables
+@import "base/bootstrap/_variables";
+// @import "../fonts/font-awesome/sass/_variables";
+@import "helpers/_variables";
+
+// Mixins
+@import "base/bootstrap/_mixins";
+@import "helpers/_mixins";
+
+// Imports
+@import "base/_config";
+
+@import "vendor/_config";
+@import "layouts/_config";
+@import "components/_config";

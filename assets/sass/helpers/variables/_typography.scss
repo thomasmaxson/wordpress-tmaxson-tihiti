@@ -1,0 +1,363 @@
+// 
+// Fonts
+// --------------------------------------------------
+// 
+// Font stack
+// ----------------------------------------
+// 
+// Arial
+// ------------------------------
+
+$_font-stack-arial: ( 
+	"Arial", 
+	"Helvetica Neue", 
+	"Helvetica", 
+	sans-serif
+) !default;
+
+
+// 
+// Helvetica
+// ------------------------------
+
+$_font-stack-helvetica: ( 
+	"Helvetica Neue", 
+	"Helvetica", 
+	"Arial", 
+	sans-serif
+) !default;
+
+
+// 
+// Lucida Grande
+// ------------------------------
+
+$_font-stack-lucida-grande: ( 
+	"Lucida Grande", 
+	"Lucida Sans Unicode", 
+	"Geneva", 
+	"Verdana", 
+	sans-serif
+) !default;
+
+
+// 
+// Verdana
+// ------------------------------
+
+$_font-stack-verdana: ( 
+	"Verdana", 
+	"Geneva", 
+	sans-serif
+) !default;
+
+
+// 
+// System
+// ------------------------------
+
+$_font-stack-system: ( 
+	-apple-system, 
+	BlinkMacSystemFont, 
+	"Avenir Next", 
+	"Avenir", 
+	"Segoe UI", 
+	"Lucida Grande", 
+	"Helvetica Neue", 
+	"Helvetica", 
+	"Fira Sans", 
+	"Roboto", 
+	"Noto", 
+	"Droid Sans", 
+	"Cantarell", 
+	"Oxygen", 
+	"Ubuntu", 
+	"Franklin Gothic Medium", 
+	"Century Gothic", 
+	"Liberation Sans", 
+	sans-serif
+) !default;
+
+
+// 
+// Garamond
+// ------------------------------
+
+$_font-stack-garamond: ( 
+	"Garamond", 
+	"Baskerville", 
+	"Baskerville Old Face", 
+	"Hoefler Text", 
+	"Times New Roman", 
+	serif
+) !default;
+
+
+// 
+// Georgia
+// ------------------------------
+
+$_font-stack-georgia: ( 
+	"Georgia", 
+	"Times", 
+	"Times New Roman", 
+	serif
+) !default;
+
+
+// 
+// Hoefler
+// ------------------------------
+
+$_font-stack-hoefler-text: ( 
+	"Hoefler Text", 
+	"Baskerville Old Face", 
+	"Garamond", 
+	"Times New Roman", 
+	serif
+) !default;
+
+
+// 
+// Consolas
+// ------------------------------
+
+$_font-stack-consolas: ( 
+	"Consolas", 
+	"monaco", 
+	monospace
+) !default;
+
+
+// 
+// Courier New
+// ------------------------------
+
+$_font-stack-courier-new: ( 
+	"Courier New", 
+	"Courier", 
+	"Lucida Sans Typewriter", 
+	"Lucida Typewriter", 
+	monospace
+) !default;
+
+
+// 
+// Monaco
+// ------------------------------
+
+$_font-stack-monaco: ( 
+	"Monaco", 
+	"Consolas", 
+	"Lucida Console", 
+	monospace
+) !default;
+
+
+// 
+// Custom
+// ----------------------------------------
+//
+// Unicode Characters
+// ------------------------------
+// Space
+$unicode-space:                            "\0020" !default;
+
+// Non-break space
+$unicode-nbsp:                             "\00a0" !default;
+
+// Slash
+$unicode-slash:                            "\8260" !default;
+
+// Percent
+$unicode-percent:                          "\0025" !default;
+
+// Middot (interpuct, interpoint)
+$unicode-middot:                           "\00b7" !default;
+
+// Bullet
+$unicode-bullet:                           "\2022" !default;
+
+// Horizontal Ellipsis
+$unicode-hellip:                           "\2026" !default;
+
+// Vertical Ellipsis
+$unicode-vellip:                           "\22EE" !default;
+
+// Mid-line Ellipsis
+$unicode-midellip:                         "\22EF" !default;
+
+//
+// Dashes
+// --------------------
+// Dash/Hyphen
+$unicode-dash:                             "\2010" !default;
+$unicode-hyphen:                           $unicode-dash !default;
+
+// En dash (nut)
+$unicode-ndash:                            "\2013" !default;
+
+// Em dash (mutton)
+$unicode-mdash:                            "\2014" !default;
+
+// Less than
+$unicode-lt:                               "\003c" !default;
+
+// Greater than
+$unicode-gt:                               "\003e" !default;
+
+// Times
+$unicode-times:                            "\00d7" !default;
+
+// Bigger Times
+$unicode-big-times:                        "\2715" !default;
+
+
+//
+// Quotes
+// --------------------
+// Quotation Mark
+$unicode-quot:                             "\0022" !default;
+
+// Single Curly Quote
+$unicode-lsquo:                            "\2018" !default;
+$unicode-rsquo:                            "\2019" !default;
+
+// Double Curly Quote
+$unicode-ldquo:                           "\201c" !default;
+$unicode-rdquo:                           "\201d" !default;
+
+
+//
+// Carets
+// --------------------
+
+$unicode-caret-up:                         "\25BC" !default;
+$unicode-caret-right:                      "\25B6" !default;
+$unicode-caret-down:                       "\25B2" !default;
+$unicode-caret-left:                       "\25C0" !default;
+
+// Single Angle Caret
+$unicode-lsaquo:                           "\2039" !default;
+$unicode-rsaquo:                           "\203a" !default;
+
+// Double Angle Caret
+$unicode-laquo:                            "\00ab" !default;
+$unicode-raquo:                            "\00bb" !default;
+
+
+//
+// Currency
+// --------------------
+
+// General Currency
+$unicode-currency:                         "\00a4" !default;
+
+// Cent
+$unicode-cent:                             "\00a2" !default;
+
+// Dollar
+$unicode-dollar:                           "\0024" !default;
+
+// Pound
+$unicode-pound:                            "\00a3" !default;
+
+// Euro
+$unicode-euro:                             "\20ac" !default;
+
+// Yen
+$unicode-yen:                              "\00a5" !default;
+
+// Rupee
+$unicode-rupee:                            "\20B9" !default;
+
+
+// 
+// Gentleman
+// ------------------------------
+
+$font-family-gentleman-hairline:           "gentleman-hairline", $font-family-sans-serif !default;
+$font-weight-gentleman-hairline:           100 !default;
+
+$font-family-gentleman-thin:               "gentleman-thin", $font-family-sans-serif !default;
+$font-weight-gentleman-thin:               200 !default;
+
+$font-family-gentleman-extra-light:        "gentleman-extra-light", $font-family-sans-serif !default;
+$font-weight-gentleman-extra-light:        300 !default;
+$font-family-gentleman-xlight:             $font-family-gentleman-extra-light !default;
+$font-weight-gentleman-xlight:             $font-weight-gentleman-extra-light !default;
+
+$font-family-gentleman-light:              "gentleman-light", $font-family-sans-serif !default;
+$font-weight-gentleman-light:              400 !default;
+
+$font-family-gentleman-book:               "gentleman-book", $font-family-sans-serif !default;
+$font-weight-gentleman-book:               500 !default;
+
+$font-family-gentleman-regular:            "gentleman-regular", $font-family-sans-serif !default;
+$font-weight-gentleman-regular:            600 !default;
+
+$font-family-gentleman-medium:             "gentleman-medium", $font-family-sans-serif !default;
+$font-weight-gentleman-medium:             700 !default;
+
+$font-family-gentleman-bold:               "gentleman-bold", $font-family-sans-serif !default;
+$font-weight-gentleman-bold:               800 !default;
+
+$font-family-gentleman-heavy:              "gentleman-heavy", $font-family-sans-serif !default;
+$font-weight-gentleman-heavy:              900 !default;
+
+$font-family-gentleman-black:              "gentleman-black", $font-family-sans-serif !default;
+$font-weight-gentleman-black:              1000 !default;
+
+$font-family-gentleman: ( 
+	hairline    : $font-family-gentleman-hairline, 
+	thin        : $font-family-gentleman-thin, 
+	extra-light : $font-family-gentleman-extra-light, 
+	xlight      : $font-family-gentleman-xlight, 
+	light       : $font-family-gentleman-light, 
+	book        : $font-family-gentleman-book,
+	regular     : $font-family-gentleman-regular,
+	medium      : $font-family-gentleman-medium,
+	bold        : $font-family-gentleman-bold,
+	heavy       : $font-family-gentleman-heavy, 
+	black       : $font-family-gentleman-black
+) !default;
+
+$font-weight-gentleman: ( 
+	hairline    : $font-weight-gentleman-hairline, 
+	thin        : $font-weight-gentleman-thin, 
+	extra-light : $font-weight-gentleman-extra-light, 
+	xlight      : $font-weight-gentleman-xlight, 
+	light       : $font-weight-gentleman-light, 
+	book        : $font-weight-gentleman-book,
+	regular     : $font-weight-gentleman-regular,
+	medium      : $font-weight-gentleman-medium,
+	bold        : $font-weight-gentleman-bold,
+	heavy       : $font-weight-gentleman-heavy, 
+	black       : $font-weight-gentleman-black
+) !default;
+
+//
+// Bootstrap
+// ----------------------------------------
+
+$font-family-sans-serif:                   $_font-stack-system;
+$font-family-serif:                        $_font-stack-georgia;
+
+$font-family-base:                         $font-family-sans-serif;
+$font-size-base:                           16px;
+
+$font-size-xsmall:                         ceil( ( $font-size-base * 0.7 ) );  // ~12px
+$font-size-small:                          ceil( ( $font-size-base * 0.85 ) ); // ~14px
+$font-size-medium:                         $font-size-base;                    // ~16px
+$font-size-large:                          ceil( ( $font-size-base * 1.1 ) );  // ~18px
+$font-size-xlarge:                         ceil( ( $font-size-base * 1.45 ) ); // ~24px
+
+$font-size-h1:                             ceil( ( $font-size-base * 2 ) );    // ~32px
+$font-size-h2:                             $font-size-xlarge;
+$font-size-h3:                             ceil( ( $font-size-base * 1.25 ) ); // ~20px
+$font-size-h4:                             $font-size-large;
+$font-size-h5:                             $font-size-base;
+$font-size-h6:                             $font-size-small;
+
+$headings-font-family:                     $font-family-gentleman-book;
+$headings-font-weight:                     $font-weight-gentleman-book;

@@ -1,0 +1,63 @@
+// 
+// Media Queries
+// --------------------------------------------------
+// 
+// Breakpoints
+// ----------------------------------------
+
+@query-screen:                             ~"only screen";
+@query-mobile:                             ~"( max-width: @{grid-float-breakpoint} )";
+@query-desktop:                            ~"( min-width: @{grid-float-breakpoint} )";
+
+@query-xs:                                 ~"( min-width: @{screen-xs-min} ) and ( max-width: @{screen-xs-max} )";
+@query-xs-up:                              ~"( min-width: @{screen-xs-min} )";
+@query-xs-down:                            ~"( max-width: @{screen-xs-max} )";
+
+@query-sm:                                 ~"( min-width: @{screen-sm-min} ) and ( max-width: @{screen-sm-max} )";
+@query-sm-up:                              ~"( min-width: @{screen-sm-min} )";
+@query-sm-down:                            ~"( max-width: @{screen-sm-max} )";
+
+@query-md:                                 ~"( min-width: @{screen-md-min} ) and ( max-width: @{screen-md-max} )";
+@query-md-up:                              ~"( min-width: @{screen-md-min} )";
+@query-md-down:                            ~"( max-width: @{screen-md-max} )";
+
+@query-lg:                                 ~"( min-width: @{screen-lg-min} )";
+@query-lg-up:                              @query-lg;
+@query-lg-down:                            ''; // DO NOT USE
+
+
+// 
+// Orientation
+// ----------------------------------------
+ 
+@query-portrait:                           ~"( orientation: portrait )";
+@query-landscape:                          ~"( orientation: landscape )";
+
+
+// 
+// Retina
+// ----------------------------------------
+
+@query-retina:                             ~"only screen and ( -webkit-min-device-pixel-ratio: 2 )",
+                                           ~"only screen and (    min--moz-device-pixel-ratio: 2 )",
+                                           ~"only screen and (      -o-min-device-pixel-ratio: 2/1 )",
+                                           ~"only screen and (         min-device-pixel-ratio: 2 )",
+                                           ~"only screen and (                 min-resolution: 192dpi )",
+                                           ~"only screen and (                 min-resolution: 2dppx )";
+
+@query-desktop-retina:                     ~"only screen and ( @{query-desktop} ) and ( -webkit-min-device-pixel-ratio: 2 )",
+                                           ~"only screen and ( @{query-desktop} ) and (    min--moz-device-pixel-ratio: 2 )",
+                                           ~"only screen and ( @{query-desktop} ) and (      -o-min-device-pixel-ratio: 2/1 )",
+                                           ~"only screen and ( @{query-desktop} ) and (         min-device-pixel-ratio: 2 )",
+                                           ~"only screen and ( @{query-desktop} ) and (                 min-resolution: 192dpi )",
+                                           ~"only screen and ( @{query-desktop} ) and (                 min-resolution: 2dppx )";
+
+
+// 
+// Internet Explorer
+// ----------------------------------------
+
+@query-ie6-7:                              ~"screen\9";
+@query-ie8:                                ~"\0screen";
+@query-oldIE:                              ~"@{query-ie8}\,@{query-ie6-7}";
+@query-ie9-10:                             ~"screen and (min-width:0\0)";

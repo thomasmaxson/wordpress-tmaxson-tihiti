@@ -1,0 +1,251 @@
+@-moz-document url-prefix() {
+  .img-responsive,
+  .thumbnail > img,
+  .thumbnail > a > img,
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    width: 100%;
+  }
+}
+body {
+  padding: 0 !important;
+  margin: 0;
+  min-width: 768px;
+}
+.container {
+  max-width: none !important;
+  width: 100% !important;
+  padding-left: 0;
+  padding-right: 0;
+}
+.row {
+  width: 100%;
+  margin-left: -1%;
+}
+[class*="col-"] {
+  float: left;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.col-sm-1,
+.col-md-1,
+.col-lg-1,
+.col-print-1 {
+  width: 8.33333333%;
+}
+.col-sm-2,
+.col-md-2,
+.col-lg-2,
+.col-print-2 {
+  width: 16.66666667%;
+}
+.col-sm-3,
+.col-md-3,
+.col-lg-3,
+.col-print-3 {
+  width: 25%;
+}
+.col-sm-4,
+.col-md-4,
+.col-lg-4,
+.col-print-4 {
+  width: 33.33333333%;
+}
+.col-sm-5,
+.col-md-5,
+.col-lg-5,
+.col-print-5 {
+  width: 41.66666667%;
+}
+.col-sm-6,
+.col-md-6,
+.col-lg-6,
+.col-print-6 {
+  width: 50%;
+}
+.col-sm-7,
+.col-md-7,
+.col-lg-7,
+.col-print-7 {
+  width: 58.33333333%;
+}
+.col-sm-8,
+.col-md-8,
+.col-lg-8,
+.col-print-8 {
+  width: 66.66666667%;
+}
+.col-sm-9,
+.col-md-9,
+.col-lg-9,
+.col-print-9 {
+  width: 75%;
+}
+.col-sm-10,
+.col-md-10,
+.col-lg-10,
+.col-print-10 {
+  width: 83.33333333%;
+}
+.col-sm-11,
+.col-md-11,
+.col-lg-11,
+.col-print-11 {
+  width: 91.66666667%;
+}
+.col-sm-12,
+.col-md-12,
+.col-lg-12,
+.col-print-12 {
+  width: 100%;
+}
+.col-primary {
+  width: 100% !important;
+}
+* {
+  text-shadow: none !important;
+  color: #000 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+a:not('.btn'),
+a:not('.btn'):visited {
+  text-decoration: underline;
+}
+a[href]:not('.btn'):after {
+  content: " (" attr(href) ")";
+}
+.btn {
+  display: none;
+}
+a[href^="javascript:"]:after,
+a[href^="#"]:after {
+  content: "";
+}
+/*abbr[title]:after { 
+	content: " (" attr(title) ")";
+	font-style: italic;
+}*/
+pre,
+blockquote {
+  border: 1px solid #999;
+  page-break-inside: avoid;
+}
+thead {
+  display: table-header-group;
+}
+tr,
+img {
+  page-break-inside: avoid;
+}
+img {
+  max-width: 100% !important;
+}
+p,
+h2,
+h3 {
+  orphans: 3;
+  widows: 3;
+}
+h2,
+h3 {
+  page-break-after: avoid;
+}
+select {
+  background: #fff !important;
+}
+table {
+  border-collapse: collapse !important;
+  border-bottom: 1px solid #cccccc;
+}
+table > tbody > tr th,
+table > tbody > tr td {
+  padding: 7px 0 !important;
+  background-color: transparent !important;
+}
+table > tbody > tr th.text-right,
+table > tbody > tr td.text-right,
+table > tbody > tr th.text-left,
+table > tbody > tr td.text-left {
+  width: auto;
+}
+table > tbody > tr + tr > td {
+  border-top: 1px solid rgba(204, 204, 204, 0.3);
+}
+.btn > .caret,
+.dropup > .btn > .caret {
+  border-top-color: #000 !important;
+}
+.label {
+  border: 1px solid #000;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "gentleman-book", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong,
+h5 strong,
+h6 strong,
+.h1 strong,
+.h2 strong,
+.h3 strong,
+.h4 strong,
+.h5 strong,
+.h6 strong {
+  font-family: "gentleman-book", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.site-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-bottom: 15px;
+  min-height: 0;
+}
+.site-header .navbar-toggle,
+.site-header .navbar-collapse {
+  display: none;
+}
+.site-header .navbar-brand {
+  position: relative;
+  top: 15px;
+  left: 0;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  margin-left: 15px;
+  width: auto;
+  height: auto;
+  color: #000;
+  font-size: 20px;
+  font-size: 2rem;
+  text-indent: 0;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+.site-header .navbar-brand:after {
+  content: "";
+}
+.site-header.navbar-fixed-top + .site-body {
+  padding-top: 0;
+}
+.page-header.sr-only {
+  position: relative;
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+/*# sourceMappingURL=print.css.map */

@@ -1,0 +1,92 @@
+// 
+// Animations
+// --------------------------------------------------
+// 
+// Keyframes
+// ----------------------------------------
+
+$_animation-prefixes: $_prefixes !default;
+
+@mixin keyframes( $_name ){ 
+	@each $_prefix in $_animation-prefixes { 
+	//	$prefix: if( $_prefix == '', '', #{'-' + $_prefix + '-'} );
+
+		@if $_prefix == 'webkit' { @-webkit-keyframes #{$_name} { @content;}}
+	//	@if $_prefix == 'khtml'  { @-khtml-keyframes  #{$_name} { @content;}}
+		@if $_prefix == 'ms'     { @-ms-keyframes     #{$_name} { @content;}}
+		@if $_prefix == 'o'      { @-o-keyframes      #{$_name} { @content;}}
+		@if $_prefix == ''       { @keyframes         #{$_name} { @content;}}
+	}
+}
+
+
+// 
+// Animation
+// ----------------------------------------
+
+@mixin animation( $_animation... ){ 
+	@include prefix( animation, $_animation... );
+}
+
+
+// 
+// Animation Name
+// ------------------------------
+
+@mixin animation-name( $_name ){ 
+	@include prefix( animation-name, $_name );
+}
+
+
+// 
+// Animation Duration
+// ------------------------------
+
+@mixin animation-duration( $_duration: .25s ){ 
+	@include prefix( animation-duration, $_duration );
+}
+
+
+// 
+// Animation Timing Function
+// ------------------------------
+
+@mixin animation-timing-function( $_timing-function: ease ){ 
+	@include prefix( animation-timing-function, $_timing-function );
+}
+
+
+// 
+// Animation Delay
+// ------------------------------
+
+@mixin animation-delay( $_delay: 1s ){ 
+	@include prefix( animation-delay, $_delay );
+}
+
+
+// 
+// Animation Iteration Count
+// ------------------------------
+
+@mixin animation-iteration-count( $_iteration-count: infinite ){ 
+	@include prefix( animation-iteration-count, $_iteration-count );
+}
+
+
+// 
+// Animation Directions
+// ------------------------------
+
+@mixin animation-direction( $_direction: normal ){ 
+	@include prefix( animation-direction, $_direction );
+}
+
+
+// 
+// Animation Fill Mode
+// ------------------------------
+
+@mixin animation-fill-mode( $_fill-mode: both ){ 
+	@include prefix( animation-fill-mode, $_fill-mode);
+}

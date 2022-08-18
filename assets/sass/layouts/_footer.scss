@@ -1,0 +1,66 @@
+// 
+// Footer
+// --------------------------------------------------
+
+.site-footer { 
+	padding-top: $content-padding;
+	@include color( $gray-400 );
+	@include font-size( $font-size-small );
+	@include background-rgb( $gray-800 );
+
+	.footer-fixed & { 
+		@include fixed( null, null, 0 );
+		@include size( 100%, $footer-mobile-height );
+		z-index: -1;
+
+		@include query-desktop { 
+			height: $footer-height;
+		}
+	}
+
+	.copyright { 
+		text-align: center;
+
+		@include query-desktop { 
+			line-height: $social-icon-size;
+			text-align: left;
+		}
+	}
+
+	.social-media, 
+	.menu-social-media-links-container { 
+		text-align: center;
+
+		.btn.btn-outline { padding: 0;}
+
+		.fa, 
+		.fab, .fal, 
+		.far, .fas { 
+			@include position( absolute, 50%, null, null, 50% );
+			@include translate( -50%, -50% );
+		}
+
+		@include query-desktop { 
+			margin-top: 5px;
+			text-align: right;
+		}
+	}
+
+	.social-icons { 
+		.btn.btn-outline { 
+			border-color: $social-icon-color;
+			@include color( $social-icon-color );
+
+			&:hover { 
+				@include translateY( 0 );
+				border-color: $social-icon-hover-color;
+				@include color( $social-icon-hover-color );
+			}
+
+			@each $_social-site, $_social-color in $social-sites { 
+				&.btn-#{$_social-site}:hover { box-shadow: 0 0 0 5px $_social-color;}
+			}
+		}
+	}
+
+}

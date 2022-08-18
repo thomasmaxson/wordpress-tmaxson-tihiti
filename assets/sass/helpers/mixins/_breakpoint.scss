@@ -1,0 +1,125 @@
+// 
+// Breakpoints
+// --------------------------------------------------
+
+// http://codegist.net/code/bootstrap%20breakpoints%20scss/
+
+// 
+// Ranges
+// ----------------------------------------
+
+$_xs-range: ( $screen-xs-min, $screen-xs-max ); // Extra small devices (phones)
+$_sm-range: ( $screen-sm-min, $screen-sm-max ); // Small devices (portrait tablets)
+$_md-range: ( $screen-md-min, $screen-md-max ); // Medium devices (landscape tablets)
+$_lg-range: ( $screen-lg-min );                 // Large devices (desktops)
+
+
+// 
+// Queries
+// ----------------------------------------
+
+$screen:       "only screen" !default;
+
+$portrait:     "#{$screen} and (orientation: portrait)" !default;
+$landscape:    "#{$screen} and (orientation: landscape)" !default;
+
+$small-up:     $screen !default;
+$small-only:   "#{$screen} and (max-width: #{upper-bound($_xs-range)})" !default;
+
+$medium-up:    "#{$screen} and (min-width:#{lower-bound($_md-range)})" !default;
+$medium-only:  "#{$screen} and (min-width:#{lower-bound($_md-range)}) and (max-width:#{upper-bound($_md-range)})" !default;
+
+$large-up:     "#{$screen} and (min-width:#{lower-bound($_lg-range)})" !default;
+$large-only:   "#{$screen} and (max-width: #{upper-bound($_lg-range)})" !default;
+
+
+@mixin breakpoint( $_breakpoint, $_direction: min ) { 
+	@if map-has-key( $_breakpoints, $_breakpoint ){ 
+		@media ( #{$_direction}-width: #{map-get( $_breakpoints, $_breakpoint )} ) { @content;}
+
+	} @else if unitless($_breakpoint) { 
+		$_breakpoint: $_breakpoint + 0px;
+
+		@media ( #{$_direction}-width: $_breakpoint ) { @content;}
+	}
+}
+
+
+
+// https://github.com/DeloitteDigitalAPAC/DDBreakpoints/blob/master/lib/dd.breakpoints.scss
+
+
+
+// 
+// Breakpoint
+// --------------------------------------------------
+// https://gist.github.com/kirkonrails/2140c3eeb77b9428abc8
+
+/* @mixin breakpoint( $_minWidth: 0, $_maxWidth: 0, $_minHeight: 0, $_maxHeight: 0 ){ 
+	$type: type-of( $_minWidth );
+	 
+	@if $type == string { 
+		$class: $_minWidth;
+
+		@if $class == xs { 
+			@media only screen and (max-width: $screen-xs-min) { @content;}
+
+		} @else if $class == sm { 
+			@media only screen and (min-width: $screen-sm-min) { @content;}
+
+		} @else if $class == md { 
+			@media only screen and (min-width: $screen-md-min) { @content;}
+
+		} @else if $class == lg { 
+			@media only screen and (min-width: $screen-lg-min) { @content;}
+
+		} @else { 
+			@warn "Breakpoint mixin supports: xs, sm, md, lg";
+
+		}
+	} @else if $type == number { 
+		$_widthQuery: "all" !default;
+
+		// width
+		@if $_minWidth != 0 and $_maxWidth != 0 { 
+			$_widthQuery: "(min-width: #{$_minWidth}) and (max-width: #{$_maxWidth})";
+
+		} @else if $_minWidth != 0 and $_maxWidth == 0 { 
+			$_widthQuery: "(min-width: #{$_minWidth})";
+
+		} @else if $_minWidth == 0 and $_maxWidth != 0 { 
+			$_widthQuery: "(max-width: #{$_maxWidth})";
+
+		}
+
+		// height
+		$_heightQuery: 0;
+
+		@if $_minHeight != 0 and $_maxHeight != 0 { 
+			$_heightQuery: "(min-height: #{$_minHeight}) and (max-height: #{$_maxHeight})";
+
+		} @else if $_minHeight != 0 and $_maxHeight == 0 { 
+			$_heightQuery: "(min-height: #{$_minHeight})";
+
+		} @else if $_minHeight == 0 and $_maxHeight != 0 { 
+			$_heightQuery: "(max-height: #{$_maxHeight})";
+
+		}
+
+
+		@if $_minHeight != 0 { 
+			@media only screen and #{$_widthQuery} and #{$_heightQuery} { @content;}
+
+		} @else if $_maxHeight != 0 { 
+			@media only screen and #{$_widthQuery} and #{$_heightQuery} { @content;}
+
+		} @else if $_minHeight != 0 and $_maxHeight != 0 { 
+			@media only screen and #{$_widthQuery} and #{$_heightQuery} { @content;}
+
+		} @else { 
+			@media only screen and #{$_widthQuery} { @content; }
+
+		}
+
+	}
+} */

@@ -1,0 +1,47 @@
+// 
+// Social Icons
+// --------------------------------------------------
+
+.processes { 
+
+	.process { 
+		position: relative;
+		top: @content-margin-double;
+	//	padding: @content-padding-half;
+	//	background-color: @gray-lightest;
+		opacity: 0;
+		.transition( all @transition-duration @transition-timing-function @transition-duration );
+
+		&.active { 
+			top: 0;
+			opacity: 1.0;
+		}
+
+	//	p { margin: 0;}
+	}
+
+	.media { 
+		margin-bottom: @content-margin-half;
+
+		.media-left, 
+		.media > .pull-left { 
+			padding-right: @content-padding;
+
+			p { margin: 0;}
+		}
+
+		.media-right, 
+		.media > .pull-right { 
+			padding-left: @content-padding;
+
+			p { margin: 0;}
+		}
+
+		.media-body { 
+			vertical-align: middle;
+
+			* { margin-bottom: 0;}
+		}
+	}
+
+}

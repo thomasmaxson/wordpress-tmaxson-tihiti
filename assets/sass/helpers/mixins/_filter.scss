@@ -1,0 +1,78 @@
+// 
+// Filters
+// --------------------------------------------------
+// 
+// Blur
+// ----------------------------------------
+
+@mixin filter-blur( $_radius ){ 
+	-webkit-filter: blur( $_radius );
+	   -moz-filter: blur( $_radius );
+	    -ms-filter: blur( $_radius );
+}
+
+
+// 
+// Sepia
+// ----------------------------------------
+
+@mixin filter-sepia( $_radius ){ 
+	-webkit-filter: sepia( $_radius );
+	   -moz-filter: sepia( $_radius );
+	    -ms-filter: sepia( $_radius );
+}
+
+
+// 
+// Hue Rotate
+// ----------------------------------------
+
+@mixin filter-hue-rotate( $_radius ){ 
+	-webkit-filter: hue-rotate( $_radius );
+	   -moz-filter: hue-rotate( $_radius );
+	    -ms-filter: hue-rotate( $_radius );
+}
+
+
+// 
+// Brightness
+// ----------------------------------------
+
+@mixin filter-brightness( $_amount ){ 
+	-webkit-filter: brightness( $_amount );
+	   -moz-filter: brightness( $_amount );
+	    -ms-filter: brightness( $_amount );
+}
+
+
+// 
+// Contrast
+// ----------------------------------------
+
+@mixin filter-contrast( $_percentage ){ 
+	-webkit-filter: contrast( $_percentage );
+	   -moz-filter: contrast( $_percentage );
+	    -ms-filter: contrast( $_percentage );
+}
+
+
+// 
+// Invert
+// ----------------------------------------
+
+@mixin filter-invert( $_percentage ){ 
+	-webkit-filter: invert( $_percentage );
+	   -moz-filter: invert( $_percentage );
+	    -ms-filter: invert( $_percentage );
+}
+
+
+// 
+// Saturate
+// ----------------------------------------
+
+@mixin filter-saturate( $_percentage ){ 
+	-webkit-filter: saturate( $_percentage );
+	   -moz-filter: saturate( $_percentage );
+	    -ms-filter: saturate( $_percentage );
+}

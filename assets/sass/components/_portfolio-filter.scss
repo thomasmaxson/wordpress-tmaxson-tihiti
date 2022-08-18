@@ -1,0 +1,76 @@
+// 
+// Filter Bar
+// --------------------------------------------------
+
+.portfolio-filters { 
+	padding: $content-padding-half $content-padding-quarter;
+	border-bottom: 1px solid transparent;
+	margin: 0 auto $content-margin;
+	@include font-size( 0 );
+	text-align: center;
+
+	// https://iamsteve.me/blog/entry/horizontal-scrolling-responsive-menu
+	white-space: nowrap; // All items a forced onto a single line, causing the overflow when necessary
+	overflow-x: auto; // Automatic overflow means a scroll bar won’t be present if it isn’t needed
+	-webkit-overflow-scrolling: touch; // Make it smooth scrolling on iOS devices
+	-ms-overflow-style: -ms-autohiding-scrollbar; // Hide the ugly scrollbars in Edge until the scrollable area is hovered
+
+	&::-webkit-scrollbar { display: none;} // Hide the scroll bar in WebKit browsers
+
+	&.affix, 
+	&.affix-top, 
+	&.affix-bottom { 
+		@include position( fixed, 0, 0, null, 0 );
+		width: 100%;
+		background-color: $body-bg;
+		z-index: $zindex-navbar-fixed;
+
+		.admin-bar & { 
+			top: $wp-admin-bar-mobile-height;
+
+			@include query-desktop { 
+				top: $wp-admin-bar-height;
+			}
+		}
+	}
+
+	&.affix { 
+		border-color: $border-color;
+		@include material-box-shadow( 1 );
+	}
+
+	&.affix-top { position: static;}
+
+//	&.affix-bottom { position: relative;}
+
+
+	li { 
+		position: relative;
+		padding-left: 0 !important;
+		margin-left: 0 !important;
+		@include font-size( $font-size-base );
+
+		+ li { margin-left: -1px;}
+
+		&.active { 
+
+			&:before, 
+			+ li:before { display: none;}
+
+			a { border-color: $text-color;}
+		}
+	}
+
+	a { 
+		display: inline-block;
+		padding: $content-margin-quarter $content-margin-half;
+		border: 1px solid transparent;
+		@include color( $text-color );
+		@include font-size( $font-size-small );
+		text-decoration: none;
+		text-transform: uppercase;
+		@include transition( all $transition-duration $transition-timing-function );
+	}
+
+	.customize-preview & a { cursor: not-allowed;}
+}

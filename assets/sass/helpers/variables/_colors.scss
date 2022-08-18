@@ -1,0 +1,211 @@
+//
+// Colors
+// --------------------------------------------------
+//
+// Generic Colors
+// ----------------------------------------
+//
+// Grayscale
+// ------------------------------
+
+$white:                                    #fff;
+
+$gray-100:                                 #f5f5f5;
+$grey-100:                                 $gray-100;
+
+$gray-200:                                 #eee;
+$grey-200:                                 $gray-200;
+
+$gray-300:                                 #e0e0e0;
+$grey-300:                                 $gray-300;
+
+$gray-400:                                 #bdbdbd;
+$grey-400:                                 $gray-400;
+
+$gray-500:                                 #9e9e9e;
+$grey-500:                                 $gray-500;
+
+$gray-600:                                 #757575;
+$grey-600:                                 $gray-600;
+
+$gray-700:                                 #616161;
+$grey-700:                                 $gray-700;
+
+$gray-800:                                 #424242;
+$grey-800:                                 $gray-800;
+
+$gray-900:                                 #212121;
+$grey-900:                                 $gray-900;
+
+$black:                                    #000;
+
+$grays : ( 
+	100 : $gray-100, 
+	200 : $gray-200, 
+	300 : $gray-300, 
+	400 : $gray-400, 
+	500 : $gray-500, 
+	600 : $gray-600, 
+	700 : $gray-700, 
+	800 : $gray-800, 
+	900 : $gray-900
+) !default;
+
+
+//
+// Standard
+// ------------------------------
+
+$pink:                                     #e91e63;
+$red:                                      #f44336;
+$deep-orange:                              #ff5722;
+$orange:                                   #fb8c00;
+$amber:                                    #ffc107;
+$yellow:	                               #fdd835;
+$light-green:                              #8bc34a;
+$green:                                    #4caf50;
+$teal:                                     #009688;
+$cyan:                                     #00bcd4;
+$light-blue:                               #03a9f4;
+$blue:                                     #039be5;
+$indigo:                                   #3f51b5;
+$purple:	                               #8e24aa;
+$violet:	                               $purple;
+$deep-violet:                              #673ab7;
+$deep-purple:                              $deep-violet;
+
+$colors : ( 
+	pink        : $pink, 
+	red         : $red, 
+	deep-orange : $deep-orange, 
+	orange      : $orange, 
+	amber       : $amber, 
+	yellow      : $yellow, 
+	light-green : $light-green, 
+	green       : $green, 
+	teal        : $teal, 
+	cyan        : $cyan, 
+	light-blue  : $light-blue, 
+	blue        : $blue, 
+	indigo      : $indigo, 
+	purple      : $purple, 
+	violet      : $violet, 
+	deep-violet : $deep-violet, 
+	deep-purple : $deep-purple
+) !default;
+
+
+//
+// Corporate Brand Colors
+// ----------------------------------------
+
+$brand-adn:                                #d87a68 !default;
+$brand-behance:                            #1769ff !default;
+$brand-bitbucket:                          #205081 !default;
+$brand-codepen:                            $black !default;
+$brand-dropbox:                            #1087dd !default;
+$brand-facebook:                           #3b5998 !default;
+$brand-flickr:                             #ff0084 !default;
+$brand-foursquare:                         #0072b1 !default;
+$brand-github:                             #444444 !default;
+$brand-google-plus:                        #dd4b39 !default;
+$brand-instagram:                          #405de6 !default; // #3f729b;
+$brand-linkedin:                           #007bb6 !default;
+$brand-microsoft:                          #2672ec !default;
+$brand-openid:                             #f7931e !default;
+$brand-pinterest:                          #c92228 !default;
+$brand-reddit:                             #eff7ff !default;
+$brand-soundcloud:                         #ff5500 !default;
+$brand-tumblr:                             #2c4762 !default;
+$brand-twitter:                            #55acee !default;
+$brand-vimeo:                              #1ab7ea !default;
+$brand-vk:                                 #587ea3 !default;
+$brand-yahoo:                              #720e9e !default;
+$brand-youtube:                            #e52d27 !default;
+
+$social-sites: ( 
+//	adn         : $brand-adn, 
+//	behance     : $brand-behance, 
+//	bitbucket   : $brand-bitbucket, 
+	codepen     : $brand-codepen, 
+//	dropbox     : $brand-dropbox, 
+	facebook    : $brand-facebook, 
+//	flickr      : $brand-flickr, 
+//	foursquare  : $brand-foursquare, 
+	github      : $brand-github, 
+	google-plus : $brand-google-plus, 
+	instagram   : $brand-instagram, 
+	linkedin    : $brand-linkedin, 
+//	microsoft   : $brand-microsoft, 
+//	openid      : $brand-openid, 
+	pinterest   : $brand-pinterest, 
+//	reddit      : $brand-reddit, 
+//	soundcloud  : $brand-soundcloud, 
+//	tumblr      : $brand-tumblr, 
+	twitter     : $brand-twitter, 
+	vimeo       : $brand-vimeo, 
+//	vk          : $brand-vk, 
+//	yahoo       : $brand-yahoo, 
+	youtube     : $brand-youtube
+) !default;
+
+
+//
+// Bootstrap Colors
+// ----------------------------------------
+
+$text-color:                               $gray-600;
+$headings-color:                           inherit;
+
+$brand-default:                            $gray-500;
+$brand-primary:                            $green;
+
+$brand-primary-light:                      lighten( $brand-primary, 15% );
+$brand-primary-dark:                       darken( $brand-primary, 15% );
+
+
+//
+// Brand Colors
+// ----------------------------------------
+
+$brand-success:                            $brand-primary; // $green;
+$brand-info:                               #03a9f4; // $blue;
+$brand-warning:                            #ff5722; // $yellow;
+$brand-danger:                             #f44336; // $red;
+
+$brand-colors : ( 
+	primary   : $brand-primary, 
+//	secondary : $brand-secondary, 
+	success   : $brand-success, 
+	info      : $brand-info, 
+	warning   : $brand-warning, 
+	danger    : $brand-danger
+) !default;
+
+
+//
+// Button Colors
+// ------------------------------
+
+$btn-primary-bg:                           $brand-primary;
+
+
+//
+// State Colors
+// ------------------------------
+
+$state-success-text:                       $brand-success;
+$state-success-bg:                         $state-success-text;
+$state-success-border:                     $state-success-text;
+
+$state-info-text:                          $brand-info;
+$state-info-bg:                            $state-info-text;
+$state-info-border:                        $state-info-text;
+
+$state-warning-text:                       $brand-warning;
+$state-warning-bg:                         $state-warning-text;
+$state-warning-border:                     $state-warning-text;
+
+$state-danger-text:                        $brand-danger;
+$state-danger-bg:                          $state-danger-text;
+$state-danger-border:                      $state-danger-text;

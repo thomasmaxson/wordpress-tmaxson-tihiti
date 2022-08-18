@@ -1,0 +1,196 @@
+// 
+// Teaser, Project
+// --------------------------------------------------
+
+.project-teaser { 
+	position: relative;
+	margin-bottom: $content-margin;
+	overflow: hidden;
+
+	.project-link { 
+		position: relative;
+		display: block;
+
+		&:hover { text-decoration: none;}
+	}
+
+	figure { 
+		padding: 0;
+		border: 1px solid $border-color;
+		margin: 0;
+		text-align: center;
+	}
+
+	img, 
+	picture { display: inline-block;}
+
+	figcaption { 
+		position: relative;
+		top: -1px;
+		padding: $content-padding-half $content-padding-half;
+		@include background-rgb( $white );
+		z-index: 10;
+
+		.touch & { border-color: transparent;}
+
+		div { 
+			padding: 0 $content-padding-half;
+			text-align: center;
+		}
+	}
+
+
+//	@include query-desktop { 
+		.no-touch & { 
+			figcaption { 
+				@include absolute( $content-padding );
+				padding: $content-padding-half 0;
+				@include material-box-shadow( 1 );
+				opacity: 0;
+				@include scale( 0.75 );
+				@include transition( all $transition-duration $transition-timing-function );
+
+				div { 
+					@include absolute( 50%, null, null, null );
+					width: 100%;
+					opacity: 0;
+					@include translateY( -50% );
+					@include transition( all $transition-duration $transition-timing-function );
+				}
+			}
+
+			.project-link:hover figcaption { 
+				opacity: 1.0;
+				@include scale( 1.0 );
+
+				div { opacity: 1.0;}
+			}
+
+			.project-link:active figcaption, 
+			.project-link:focus figcaption { 
+				@include position( null, 1px );
+				opacity: 1.0;
+				@include scale( 1.0 );
+
+				div { 
+					padding: ( $content-padding-half - 1 ) ( $content-padding - 1 );
+					opacity: 1.0;
+				}
+			}
+
+			&.project-teaser-sm { 
+				figcaption { 
+					@include position( null, $content-padding-half );
+					padding: $content-padding-quarter 0;
+				}
+
+				&:focus figcaption { 
+					@include position( null, 1px );
+
+					div { padding: ( $content-padding-quarter - 1 ) ( $content-padding-half - 1 );}
+				}
+			}
+
+		}
+//	}
+
+}
+
+
+.project-teaser-title { 
+	padding: 0;
+	margin: 0;
+	@include color( $text-color );
+	@include font-family-primary( bold );
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	@include transition( color $transition-duration $transition-timing-function );
+
+	.touch & { @include color( $brand-primary );}
+}
+
+
+.project-teaser-description { 
+	display: table;
+	padding: 0;
+	margin: $content-margin-half auto 0;
+	@include color( $gray );
+	@include font-size( $font-size-small );
+	text-align: center;
+	@include transition( color $transition-duration $transition-timing-function );
+
+	.touch & { @include color( $text-color );}
+
+	&.list-inline-pipe > li + li:before { 
+		top: 3px;
+		bottom: 3px;
+		border-color: $gray-400;
+	}
+
+	//li { 
+	//	position: relative;
+	//	display: inline-block;
+	//	padding: floor( $content-margin-quarter / 2 ) $content-margin-quarter;
+	//	margin-left: -1px;
+	//	list-style: none;
+
+
+	//	&:after { 
+		//	content: '';
+		//	position: absolute;
+		//	top: $content-margin-quarter;
+		//	right: 0;
+		//	bottom: $content-margin-quarter;
+		//	@include background-rgb( $gray-400 );
+		//	width: 1px;
+		//	text-transform: none;
+	//	}
+
+	//	&:last-child:after { display: none;}
+	//}
+}
+
+
+.project-promoted-label { 
+	position: absolute;
+	top: floor( $content-margin-quarter / 2 );
+	left: -6px;
+	display: inline-block;
+	padding: ( ( $content-padding-quarter / 2 ) + 2 ) $content-padding-half ( $content-padding-quarter / 2 );
+	margin: 0;
+	margin-top: 5%;
+	color: $text-color;
+	@include font-primary( $font-size-small, book );
+	text-align: center;
+	letter-spacing: 0.1em;
+//	text-shadow: 0px -1px 0px rgba( 0, 0, 0, 0.3 );
+	box-shadow: inset 0px 1px 0px rgba( 255, 255, 255, 0.3 ),
+				inset 0px 0px 20px rgba( 0, 0, 0, 0.1 ),
+				0px 1px 1px rgba( 0, 0, 0, 0.4 );
+	background-color: $gray-100;
+	z-index: 10;
+
+	&:before { 
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: -.5em;
+		display: block;
+		border-width: .5em 0 0 .5em;
+		border-style: solid;
+		border-color: darken( $gray-100, 25% ) transparent transparent transparent;
+	}
+}
+
+
+/*.project-promoted-label { 
+	display: inline-block;
+	padding: ( $content-padding-quarter / 2 ) $content-padding-half;
+	border-radius: 1000em;
+	margin: 0 auto $content-margin-half;
+	@include color( $white );
+	@include font-size( $font-size-small );
+	text-align: center;
+	text-transform: lowercase;
+	background-color: $gray;
+}*/

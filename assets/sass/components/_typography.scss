@@ -1,0 +1,81 @@
+// 
+// Typography
+// --------------------------------------------------
+// 
+// Text Selection
+// ----------------------------------------
+
+@include selection;
+
+
+// 
+// Fonts
+// ----------------------------------------
+// 
+// Font Sizes
+// ------------------------------
+
+$_font-sizes: ( 
+	xsmall  : $font-size-xsmall, 
+	small   : $font-size-small, 
+	medium  : $font-size-medium, 
+	base    : $font-size-base, 
+	large   : $font-size-large, 
+	xlarge  : $font-size-xlarge, 
+	10      : 10px, 
+	11      : 11px, 
+	12      : 12px, 
+	14      : 14px, 
+	16      : 16px, 
+	18      : 18px, 
+	20      : 20px, 
+	22      : 22px, 
+	24      : 24px, 
+	26      : 26px, 
+	28      : 28px, 
+	30      : 30px, 
+	32      : 32px, 
+	34      : 34px, 
+	36      : 36px, 
+	40      : 40px, 
+	45      : 45px, 
+	50      : 50px, 
+	55      : 55px, 
+	60      : 60px, 
+	65      : 65px, 
+	70      : 70px, 
+	75      : 75px, 
+	80      : 80px, 
+	85      : 85px, 
+	90      : 90px, 
+	95      : 95px, 
+	100     : 100px
+);
+
+@each $_font-size, $_font-value in $_font-sizes { 
+	.font-size-#{$_font-size} { @include font-size( $_font-value );}
+}
+
+// 
+// Font Families
+// ------------------------------
+// 
+// Gentleman
+// --------------------
+
+$_font-weights-gentleman: ( 
+	hairline, 
+	thin, 
+	extra-light, 
+	light, 
+	book, 
+	regular, 
+	medium, 
+	bold, 
+	heavy, 
+	black
+);
+
+@each $_font-weight in $_font-weights-gentleman { 
+	.font-family-primary-#{$_font-weight} { @include font-family-primary( $_font-weight );}
+}

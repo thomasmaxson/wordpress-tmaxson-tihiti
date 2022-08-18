@@ -1,0 +1,19 @@
+// 
+// Transforms shorthand that can range from 1-to-4 values to be 4 values
+// --------------------------------------------------
+
+._unpack-shorthand( @shorthand... )
+{ 
+	@if( length( @shorthand ) == 1 )
+		@return nth( @shorthand, 1 ) nth( @shorthand, 1 ) nth( @shorthand, 1 ) nth( @shorthand, 1 );
+
+	@elseif( length( @shorthand ) == 2 )
+		@return nth( @shorthand, 1 ) nth( @shorthand, 2 ) nth( @shorthand, 1 ) nth( @shorthand, 2 );
+
+	@elseif( length( @shorthand ) == 3 )
+		@return nth( @shorthand, 1 ) nth( @shorthand, 2 ) nth( @shorthand, 3 ) nth( @shorthand, 2 );
+
+	@else
+		@return @shorthand;
+
+}

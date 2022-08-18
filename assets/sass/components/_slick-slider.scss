@@ -1,0 +1,168 @@
+// 
+// Slider, Slick
+// --------------------------------------------------
+
+.slick-slider { 
+
+	.slick-slide { 
+		margin-right: $content-margin;
+		margin-left: $content-margin;
+		margin-bottom: $content-margin;
+
+		&:hover { @include grab-cursor();}
+
+		&:focus { outline: none;}
+
+		&:active { @include grabbing-cursor();}
+
+		img { 
+			border: 1px solid lighten( $border-color, 10% );
+			@include transition( border-color $transition-duration $transition-timing-function );
+		}
+
+		&.slick-current { 
+			img { border-color: $border-color;}
+		}
+	}
+
+	.slick-prev, 
+	.slick-next { 
+		@include absolute( 0, null, ( $content-margin + $content-margin-quarter ), null );
+		@include square( auto );
+		@include color( $white );
+		@include font-size( 45px );
+		text-shadow: 0 0 10px $text-color;
+		background: transparent;
+		@include transition( all $transition-duration $transition-timing-function );
+		cursor: pointer;
+	//	opacity: 0;
+		z-index: 1 !important;
+		zoom: 1;
+
+		&:hover { @include color( $text-color );}
+
+		&:focus, 
+		&:active { outline: none;}
+
+		.fa, 
+		.fab, 
+		.fal { 
+			width: 60px;
+
+			@include query-desktop { 
+				width: 100px;
+			}
+		}
+		.touch & { display: none !important;}
+	}
+
+	$_slick-arrow-mobile-offset         : 45px;
+	$_slick-arrow-mobile-offset-active  : ( $_slick-arrow-mobile-offset - 5px );
+	
+	$_slick-arrow-desktop-offset        : 0;
+	$_slick-arrow-desktop-offset-active : ( $_slick-arrow-desktop-offset - 10px );
+
+	.slick-prev { 
+		left: $_slick-arrow-mobile-offset;
+
+		&:active { left: $_slick-arrow-mobile-offset-active;}
+
+		@include query-desktop { 
+			left: $_slick-arrow-desktop-offset;
+
+			&:active { left: $_slick-arrow-desktop-offset-active;}
+		}
+	}
+
+	.slick-next { 
+		right: $_slick-arrow-mobile-offset;
+
+		&:active { right: $_slick-arrow-mobile-offset-active;}
+
+		@include query-desktop { 
+			right: $_slick-arrow-desktop-offset;
+
+			&:active { right: $_slick-arrow-desktop-offset-active;}
+		}
+	}
+
+//	&:hover .slick-prev, 
+//	&:hover .slick-next { opacity: 1.0;}
+}
+
+
+.slick-dots
+{ 
+	display: block;
+	padding: 0;
+	margin: 0;
+	margin-top: $content-margin-half;
+	width: 100%;
+	list-style: none;
+	text-align: center;
+
+	li { 
+		position: relative;
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+		overflow: visible;
+
+		+ li { margin-left: $content-margin-half;}
+
+		button { 
+			position: relative;
+			display: inline-block;
+			padding: 0;
+			border: 0;
+			border-radius: 100%;
+			margin: 0 auto;
+			@include square( 10px );
+			line-height: 0;
+			text-align: center;
+			font-size: 0;
+			background-color: $gray-light;
+			cursor: pointer;
+			outline: none;
+			@include transition( all $transition-duration $transition-timing-function );
+			-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+
+			&:hover, 
+			&:focus { 
+				background-color: $gray;
+				outline: none;
+			}
+
+			.touch & { @include square( 16px );}
+
+			@include query-desktop { 
+				@include square( 12px );
+
+				.touch & { @include square( 16px );}
+			}
+		}
+
+		&.slick-active button { 
+			background-color: $text-color;
+			cursor: default;
+			pointer-events: none;
+			margin-top: -2px;
+			@include square( 14px );
+
+			.touch & { @include square( 20px );}
+
+			@include query-desktop { 
+				@include square( 18px );
+
+				.touch & { @include square( 20px );}
+			}
+		}
+
+		&.slick-disabled { 
+			visibility: hidden;
+			opacity: 0 !important;
+			zoom: 1 !important;
+		}
+	}
+}

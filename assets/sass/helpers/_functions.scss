@@ -1,0 +1,19 @@
+//
+// Imports
+// --------------------------------------------------
+// https://github.com/HugoGiraudel/SassyJSON/tree/master/stylesheets/decode/helpers
+
+@import "functions/_shorthand-compact";
+@import "functions/_shorthand-unpack";
+
+@import "functions/_contains-false";
+@import "functions/_slice";
+@import "functions/_set-unit";
+@import "functions/_strip-unit";
+
+@import "functions/_is-color";
+@import "functions/_is-length";
+@import "functions/_is-number";
+@import "functions/_is-size";
+
+@import "functions/_to-number";

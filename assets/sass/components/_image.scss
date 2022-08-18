@@ -1,0 +1,42 @@
+// 
+// Images
+// --------------------------------------------------
+// 
+// WP Stats
+// ----------------------------------------
+
+#wpstats { 
+	@include absolute( 0, null, null, 0 );
+	@include square( 0 );
+	overflow: hidden;
+	visibility: hidden;
+	clip: rect( 1px, 1px, 1px, 1px );
+}
+
+
+// 
+// Responsive
+// ----------------------------------------
+
+.img-responsive { 
+
+	&.pull-left, 
+	&.pull-left-xs, 
+	&.pull-left-sm, 
+	&.pull-left-md, 
+	&.pull-left-lg, 
+	&.pull-right, 
+	&.pull-right-xs, 
+	&.pull-right-sm, 
+	&.pull-right-md, 
+	&.pull-right-lg { display: inline-block;}
+
+}
+
+
+// 
+// Align
+// ----------------------------------------
+
+.img-centered, 
+.picture-centered { @extend .center-block;}

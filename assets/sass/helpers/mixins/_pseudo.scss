@@ -1,0 +1,10 @@
+// 
+// Pseudo
+// --------------------------------------------------
+
+@mixin pseudo( $display: block, $pos: absolute, $content: '' )
+{ 
+	content: $content;
+	position: $pos;
+	display: $display;
+}

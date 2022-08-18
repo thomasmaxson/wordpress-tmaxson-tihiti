@@ -1,0 +1,69 @@
+// 
+// Background
+// --------------------------------------------------
+// 
+// RGB Background Color
+// ----------------------------------------
+
+.background-rgb( @_color ){ 
+	background-color: @_color;
+	background-color: rgb( red( @_color ), green( @_color ), blue( @_color ) );
+}
+
+
+// 
+// RGBA Background Color
+// ----------------------------------------
+
+.background-rgba( @_color, @_alpha: 1.0 ){ 
+
+	& when ( @_alpha >= 0 ){ 
+		background-color: @_color;
+		background-color: rgba( red( @_color ), green( @_color ), blue( @_color ), @_alpha );
+	}
+
+	& when ( @_alpha < 0 ){ 
+		.background-rgb( @_color );
+	}
+
+}
+
+
+// 
+// Background Size
+// ----------------------------------------
+
+.background-size( @_cover: cover ){ 
+	-webkit-background-size: @_cover;
+	   -moz-background-size: @_cover;
+	    -ms-background-size: @_cover;
+	     -o-background-size: @_cover;
+	       -background-size: @_cover;
+	        background-size: @_cover;
+}
+
+
+// 
+// Background Cover
+// ----------------------------------------
+
+.background-cover( @_url ){ 
+	background: url( '@{_url}' ) no-repeat center; 
+	background-size: cover;
+}
+
+
+// 
+// Background Cover, Fixed
+// ----------------------------------------
+
+.background-cover-fixed( @_url ){ 
+	background: url( '@{_url}' ) no-repeat center;
+	background-attachment: scroll;
+	background-size: cover;
+
+	// Desktop ONLY
+	@media only screen and @query-desktop { 
+		background-attachment: fixed;
+	}
+}

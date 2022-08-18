@@ -1,0 +1,42 @@
+// 
+// Skills
+// --------------------------------------------------
+
+@_scroll-wheel-width:                      28px;
+@_scroll-wheel-height:                     ( @_scroll-wheel-width + ceil( @_scroll-wheel-width / 2 ) );
+@_scroll-wheel-length:                     ceil( @_scroll-wheel-width / 4 );
+
+@_scroll-wheel-border-width:               3px;
+@_scroll-wheel-default-border-color:       @text-color;
+@_scroll-wheel-inverse-border-color:       @white;
+
+.scroll-wheel { 
+	.position( absolute, null, null, 50px, 50% );
+	display: none;
+	border: @_scroll-wheel-border-width solid @_scroll-wheel-default-border-color;
+	border-radius: ceil( @_scroll-wheel-width / 2 );
+	.size( @_scroll-wheel-width, @_scroll-wheel-height );
+	z-index: 5;
+	.translateX( -50% );
+
+	&:after { 
+		content: '';
+		.position( absolute, ( @_scroll-wheel-border-width + floor( @_scroll-wheel-border-width / 2 ) ), null, null, 50% );
+		display: block;
+		border-radius: ceil( @_scroll-wheel-border-width / 2 );
+		.size( @_scroll-wheel-border-width, @_scroll-wheel-length );
+		.background-rgb( @_scroll-wheel-default-border-color );
+		.translateX( -50% );
+		animation: scrollWheel 1.5s infinite;
+	}
+
+	&.scroll-wheel-inverse { 
+		border-color: @_scroll-wheel-inverse-border-color;
+
+		&:after { .background-rgb( @_scroll-wheel-inverse-border-color );}
+	}
+
+	@media @query-screen and @query-desktop { 
+		display: block;
+	}
+}

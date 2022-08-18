@@ -1,0 +1,23 @@
+// 
+// Forms
+// --------------------------------------------------
+
+input, 
+textarea, 
+select { 
+	&:-webkit-autofill { 
+		&, 
+		&:hover, 
+		&:focus { 
+			$_input-fill-bg-color : rgb( red( $input-bg ), green( $input-bg ), blue( $input-bg ) );
+			$_input-fill-color    : $input-color;
+
+			-webkit-text-fill-color: $_input-fill-color;
+			@include box-shadow( inset 0 0 0 1000px $_input-fill-bg-color );
+
+			&::selection { background: $_input-fill-color;}
+		}
+	}
+}
+
+textarea { resize: vertical;}

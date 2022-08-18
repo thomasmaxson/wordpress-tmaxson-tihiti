@@ -1,0 +1,51 @@
+//
+// CONTACT FORM 7
+// --------------------------------------------------
+
+.screen-reader-response { .sr-only();}
+
+//.wpcf7-form-control:not(.wpcf7-submit):not(.wpcf7-range):not(.wpcf7-checkbox):not(.wpcf7-radio):not(.wpcf7-acceptance):not(.wpcf7-file) { .form-control();}
+
+.wpcf7-form p { 
+	margin: 0 !important;
+//	line-height: 1px;
+}
+
+.wpcf7-checkbox { 
+	.wpcf7-list-item { 
+		.checkbox();
+	}
+
+	&.checkbox-inline .wpcf7-list-item { 
+		.checkbox-inline();
+	}
+}
+
+.wpcf7-radio { 
+	.wpcf7-list-item { 
+		.radio();
+	}
+
+	&.radio-inline .wpcf7-list-item { 
+		.radio-inline();
+	}
+}
+
+.wpcf7-submit {
+	.btn();
+	.btn-primary();
+}
+ 
+/* Style validation */
+div.wpcf7-validation-errors { 
+	margin: 0;
+	.alert();
+	.alert-danger();
+}
+
+span.wpcf7-not-valid-tip {
+	.help-block();
+	color: @state-danger-text;
+}
+
+.wpcf7-form-control.wpcf7-not-valid { border-color: @state-danger-text !important;}

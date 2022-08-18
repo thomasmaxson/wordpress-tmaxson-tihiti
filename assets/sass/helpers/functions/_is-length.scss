@@ -1,0 +1,8 @@
+// 
+// Checks for a valid CSS length
+// --------------------------------------------------
+
+@function _is-length( $_value ){ 
+	@return ( type-of( $_value ) == "number" and not unitless( $_value ) ) 
+       or ( index( auto initial inherit 0, $_value ) != false );
+}

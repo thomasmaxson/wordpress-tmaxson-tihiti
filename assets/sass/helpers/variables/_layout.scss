@@ -1,0 +1,55 @@
+//
+// Layout
+// --------------------------------------------------
+
+$grid-float-breakpoint:                    $screen-md; // $screen-sm-max;
+
+
+//
+// Content Padding
+// ----------------------------------------
+
+$content-padding-quarter:                  floor( $grid-gutter-width / 4 ) !default; // ~6px
+$content-padding-half:                     floor( $grid-gutter-width / 2 ) !default; // ~15px
+
+$content-padding:                          $grid-gutter-width !default;              // ~30px
+
+$content-padding-double:                   floor( $grid-gutter-width * 2 ) !default; // ~60px
+$content-padding-triple:                   floor( $grid-gutter-width * 3 ) !default; // ~ 90px
+$content-padding-quadruple:                floor( $grid-gutter-width * 4 ) !default; // ~ 120px
+$content-padding-quintuple:                floor( $grid-gutter-width * 5 ) !default; // ~ 150px
+
+
+// 
+// Borders
+// ----------------------------------------
+
+$border-width:                             1px !default;
+
+$border-color:                             $gray-300;
+$border-color-light:                       lighten( $border-color, 10% );
+$border-color-dark:                        darken( $border-color, 10% );
+
+
+//
+// Radius
+// ------------------------------
+
+$border-radius-base:                       0;
+$border-radius-large:                      $border-radius-base;
+$border-radius-small:                      $border-radius-base;
+
+
+//
+// Margin
+// ----------------------------------------
+
+$content-margin-quarter:                   floor( $grid-gutter-width / 4 ) !default; // ~ 6px
+$content-margin-half:                      floor( $grid-gutter-width / 2 ) !default; // ~ 15px
+
+$content-margin:                           $grid-gutter-width !default;              // ~ 30px
+
+$content-margin-double:                    floor( $grid-gutter-width * 2 ) !default; // ~ 60px
+$content-margin-triple:                    floor( $grid-gutter-width * 3 ) !default; // ~ 90px
+$content-margin-quadruple:                 floor( $grid-gutter-width * 4 ) !default; // ~ 120px
+$content-margin-quintuple:                 floor( $grid-gutter-width * 5 ) !default; // ~ 150px

@@ -1,0 +1,352 @@
+// 
+// Media Queries
+// --------------------------------------------------
+// 
+// General
+// ----------------------------------------
+
+@mixin query-screen( $_min, $_max ) { 
+	@media ( min-width: $_min ) and ( max-width: $_max ) { 
+		@content;
+	}
+}
+
+
+@mixin query-max-screen( $_width ) { 
+	@media ( max-width: $_width ) { 
+		@content;
+	}
+}
+
+
+@mixin query-min-screen( $_width ) { 
+	@media ( min-width: $_width ) { 
+		@content;
+	}
+}
+
+
+@mixin query-print() { 
+	@media print { 
+		@content;
+	}
+}
+
+
+// 
+// Bootstrap
+// ----------------------------------------
+// 
+// Extra Small (XS)
+// ------------------------------
+
+@mixin query-screen-xs() { 
+	@media ( min-width: $screen-xs-min ) and ( max-width: $screen-xs-max ) { 
+		@content;
+	}
+}
+
+
+@mixin query-screen-xs-up() { 
+	@media ( min-width: $screen-xs-min ) { 
+		@content;
+	}
+}
+
+
+@mixin query-screen-xs-down() { 
+	@media ( max-width: $screen-xs-max ) { 
+		@content;
+	}
+}
+
+
+// 
+// Small (SM)
+// ------------------------------
+
+@mixin query-screen-sm() { 
+	@media ( min-width: $screen-sm-min ) and ( max-width: $screen-sm-max ) { 
+		@content;
+	}
+}
+
+
+@mixin query-screen-sm-up() { 
+	@media ( min-width: $screen-sm-min ) { 
+		@content;
+	}
+}
+
+
+@mixin query-screen-sm-down() { 
+	@media ( max-width: $screen-sm-max ) { 
+		@content;
+	}
+}
+
+
+// 
+// Medium (MD)
+// ------------------------------
+
+@mixin query-screen-md() { 
+	@media ( min-width: $screen-md-min ) and ( max-width: $screen-md-max ) { 
+		@content;
+	}
+}
+
+
+@mixin query-screen-md-up() { 
+	@media ( min-width: $screen-md-min ) { 
+		@content;
+	}
+}
+
+
+@mixin query-screen-md-down() { 
+	@media ( max-width: $screen-md-max ) { 
+		@content;
+	}
+}
+
+
+// 
+// Large (LG)
+// ------------------------------
+
+@mixin query-screen-lg() { 
+	@media ( min-width: $screen-lg-min ) and ( max-width: $screen-lg-max ) { 
+		@content;
+	}
+}
+
+
+@mixin query-screen-lg-up() { 
+	@media ( min-width: $screen-lg-min ) { 
+		@content;
+	}
+}
+
+
+@mixin query-screen-lg-down() { 
+	@media ( max-width: $screen-lg-max ) { 
+		@content;
+	}
+}
+
+
+// 
+// Orientation
+// ----------------------------------------
+// 
+// Portrait
+// ------------------------------
+
+@mixin query-portrait() { 
+	@media ( orientation: portrait ) { 
+		@content;
+	}
+}
+
+
+// 
+// Landscape
+// ------------------------------
+
+@mixin query-landscape() { 
+	@media ( orientation: landscape ) { 
+		@content;
+	}
+}
+
+
+// 
+// Devices
+// ----------------------------------------
+// 
+// Mobile
+// ------------------------------
+
+@mixin query-mobile() { 
+	@media ( max-width: $grid-float-breakpoint ) { 
+		@content;
+	}
+}
+
+
+// 
+// Desktop
+// ------------------------------
+
+@mixin query-desktop() { 
+	@media ( min-width: $grid-float-breakpoint ) { 
+		@content;
+	}
+}
+
+
+// 
+// iPhone7+
+// ------------------------------
+
+@mixin query-iphone7plus( $_orientation: all ) { 
+	@include query-iphone6plus( $_orientation );
+}
+
+
+// 
+// iPhone7
+// ------------------------------
+
+@mixin query-iphone7( $_orientation: all ) { 
+	@include query-iphone6( $_orientation );
+}
+
+
+// 
+// iPhone6+
+// ------------------------------
+
+@mixin query-iphone6plus( $_orientation: all ) { 
+	$_device_min_width      : 414px;
+	$_device_max_width      : 736px;
+	$_device_min_pixel_ratio : 3;
+
+	@if $_orientation == all { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-min-device-pixel-ratio: $_device_min_pixel_ratio ) { 
+			@content;
+		}
+	} @else { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-min-device-pixel-ratio: $_device_min_pixel_ratio ) and ( orientation: $_orientation ) { 
+			@content;
+		}
+	}
+}
+
+
+// 
+// iPhone6
+// ------------------------------
+
+@mixin query-iphone6( $_orientation: all ) { 
+	$_device_min_width       : 375px;
+	$_device_max_width       : 667px;
+	$_device_min_pixel_ratio : 2;
+
+	@if $_orientation == all { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-min-device-pixel-ratio: $_device_min_pixel_ratio ) { 
+			@content;
+		}
+	} @else { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-min-device-pixel-ratio: $_device_min_pixel_ratio ) and ( orientation: $_orientation ) { 
+			@content;
+		}
+	}
+}
+
+
+// 
+// iPhone5
+// ------------------------------
+
+@mixin query-iphone5( $_orientation: all ) { 
+	$_device_min_width    : 320px;
+	$_device_max_width    : 568px;
+	$_device_pixel_ratio  : 2;
+	$_device_aspect_ratio : '40/71';
+
+	@if $_orientation == all { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-device-pixel-ratio: $_device_pixel_ratio ) and ( device-aspect-ratio: $_device_aspect_ratio ) { 
+			@content;
+		}
+	} @else { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-device-pixel-ratio: $_device_pixel_ratio ) and ( device-aspect-ratio: $_device_aspect_ratio ) and ( orientation:#{$_orientation} ) { 
+			@content;
+		}
+	}
+}
+
+
+// 
+// iPhone4
+// ------------------------------
+
+@mixin query-iphone4( $_orientation: all ) { 
+	$_device_min_width    : 320px;
+	$_device_max_width    : 480px;
+	$_device_pixel_ratio  : 2;
+	$_device_aspect_ratio : '2/3';
+
+	@if $_orientation == all { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-device-pixel-ratio: $_device_pixel_ratio ) and ( device-aspect-ratio: $_device_aspect_ratio ) { 
+			@content;
+		}
+	} @else { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-device-pixel-ratio: $_device_pixel_ratio ) and ( device-aspect-ratio: 2/3 ) and ( orientation:#{$_orientation} ) { 
+			@content;
+		}
+	}
+}
+
+
+// 
+// iPad
+// ------------------------------
+
+@mixin query-ipad( $_orientation: all ) { 
+	$_device_min_width : 768px;
+	$_device_max_width : 1024px;
+
+	@if $_orientation == all { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) { 
+			@content;
+		}
+	} @else { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( orientation:#{$_orientation} ) { 
+			@content;
+		}
+	}
+}
+
+
+// 
+// iPad, Mini
+// ------------------------------
+
+@mixin query-ipad-mini( $_orientation: all ) { 
+	$_device_min_width   : 768px;
+	$_device_max_width   : 1024px;
+	$_device_pixel_ratio : 1;
+
+	@if $_orientation == all { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-min-device-pixel-ratio: $_device_pixel_ratio ) { 
+			@content;
+		}
+	} @else { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-min-device-pixel-ratio: $_device_pixel_ratio ) and ( orientation:#{$_orientation} ) { 
+			@content;
+		}
+	}
+}
+
+
+// 
+// iPad, Retina Display
+// ------------------------------
+
+@mixin query-ipad-retina( $_orientation: all ) { 
+	$_device_min_width   : 768px;
+	$_device_max_width   : 1024px;
+	$_device_pixel_ratio : 2;
+
+	@if $_orientation == all { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-min-device-pixel-ratio: $_device_pixel_ratio ) { 
+			@content;
+		}
+	} @else { 
+		@media only screen and ( min-device-width: $_device_min_width ) and ( max-device-width: $_device_max_width ) and ( -webkit-min-device-pixel-ratio: $_device_pixel_ratio ) and ( orientation:#{$_orientation} ) { 
+			@content;
+		}
+	}
+}

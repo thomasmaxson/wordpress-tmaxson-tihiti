@@ -1,0 +1,12 @@
+// 
+// Debug
+// --------------------------------------------------
+
+@if true == $_debug { 
+
+	.logged-in img { 
+		&[alt=""], 
+		&:not([alt]) { border: 1px dashed red !important;}
+	}
+
+}

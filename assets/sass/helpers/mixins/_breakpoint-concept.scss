@@ -1,0 +1,329 @@
+// 
+// Breakpoint
+// --------------------------------------------------
+// https://raw.githubusercontent.com/eduardoboucas/include-media/master/dist/_include-media.scss
+
+$_breakpoints: ( 
+	xs : 0, 
+	sm : $screen-sm-min, 
+	md : $screen-md-min, 
+	lg : $screen-lg-min, 
+	phone   : $screen-xs-min, 
+	tablet  : $screen-sm-min, 
+	desktop : $screen-md-min
+) !default;
+
+
+//
+// Creates a list of static expressions or media types
+// ----------------------------------------
+
+$_media-expressions: ( 
+	'screen'    : 'screen', 
+	'print'     : 'print', 
+	'handheld'  : 'handheld', 
+	'landscape' : '(orientation: landscape)', 
+	'portrait'  : '(orientation: portrait)', 
+	'retina2x'  : '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)', 
+	'retina3x'  : '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)'
+) !default;
+
+
+//
+// Defines a number to be added or subtracted from each unit when declaring breakpoints with exclusive intervals
+// ----------------------------------------
+
+$_unit-intervals: ( 
+  'px'  : 1, 
+  'em'  : 0.01, 
+  'rem' : 0.1, 
+  ''    : 0
+) !default;
+
+//
+// Selects which breakpoint to emulate when support for media queries is disabled. Media queries that start at or
+// intercept the breakpoint will be displayed, any others will be ignored.
+//
+// @example scss - This media query will show because it intercepts the static breakpoint
+//  $im-media-support: false;
+//  $im-no-media-breakpoint: 'desktop';
+//  @include media('>=tablet') {
+//    .foo {
+//      color: tomato;
+//    }
+//  }
+//
+//  /* Generates: */
+//  .foo {
+//    color: tomato;
+//  }
+//
+// @example scss - This media query will NOT show because it does not intercept the desktop breakpoint
+//  $im-media-support: false;
+//  $im-no-media-breakpoint: 'tablet';
+//  @include media('>=desktop') {
+//    .foo {
+//      color: tomato;
+//    }
+//  }
+//
+//  /* No output */
+//
+$im-no-media-breakpoint: 'desktop' !default;
+
+//
+// Selects which media expressions are allowed in an expression for it to be used when media queries
+// are not supported.
+//
+// @example scss - This media query will show because it intercepts the static breakpoint and contains only accepted media expressions
+//  $im-media-support: false;
+//  $im-no-media-breakpoint: 'desktop';
+//  $im-no-media-expressions: ('screen');
+//  @include media('>=tablet', 'screen') {
+//    .foo {
+//      color: tomato;
+//    }
+//  }
+//
+//   /* Generates: */
+//   .foo {
+//     color: tomato;
+//   }
+//
+// @example scss - This media query will NOT show because it intercepts the static breakpoint but contains a media expression that is not accepted
+//  $im-media-support: false;
+//  $im-no-media-breakpoint: 'desktop';
+//  $im-no-media-expressions: ('screen');
+//  @include media('>=tablet', 'retina2x') {
+//    .foo {
+//      color: tomato;
+//    }
+//  }
+//
+//  /* No output */
+//
+$im-no-media-expressions: ( 
+	'screen', 
+	'portrait', 
+	'landscape'
+) !default;
+
+
+//
+// Get operator of an expression
+// ----------------------------------------
+
+@function get-expression-operator( $_expression ){ 
+	@each $_operator in ( '>=', '>', '<=', '<', '≥', '≤' ){ 
+		@if str-index( $_expression, $_operator ){ 
+			@return $_operator;
+		}
+	}
+
+	@warn "No operator found in `#{$_expression}`.";
+}
+
+
+//
+// Get dimension prefix based on an operator
+// ----------------------------------------
+
+@function get-expression-prefix( $_operator ){ 
+	@return if( index( ( '<', '<=', '≤' ), $_operator ), 'max', 'min' );
+}
+
+
+//
+// Get dimension of an expression, based on a found operator
+// ----------------------------------------
+
+@function get-expression-dimension( $_expression, $_operator ){ 
+	$_operator-index   : str-index( $_expression, $_operator );
+	$_parsed-dimension : str-slice( $_expression, 0, $_operator-index - 1 );
+	$_dimension        : 'width';
+
+	@if str-length( $_parsed-dimension ) > 0 { 
+		$_dimension: $_parsed-dimension;
+	}
+
+	@return $_dimension;
+}
+
+
+//
+// Get value of an expression, based on a found operator
+// ----------------------------------------
+
+@function get-expression-value( $_expression, $_operator ){ 
+	$_operator-index: str-index( $_expression, $_operator );
+	$_value: str-slice( $_expression, $_operator-index + str-length( $_operator ) );
+
+	@if map-has-key( $_breakpoints, $_value ) { 
+		$_value: map-get($_breakpoints, $_value);
+
+	} @else {
+		$_value: _to-number($_value);
+
+	}
+
+	$_interval: map-get( $_unit-intervals, unit( $_value ) );
+
+	@if not $_interval { 
+		@warn 'Unknown unit `#{unit($_value)}`.';
+
+	}
+
+	@if $_operator == '>' { 
+		$_value: $_value + $_interval;
+
+	} @else if $_operator == '<' { 
+		$_value: $_value - $_interval;
+
+	}
+
+	@return $_value;
+}
+
+
+//
+// Parse an expression to return a valid media-query expression
+// ----------------------------------------
+
+@function parse-expression( $_expression ){ 
+	// If it is part of $_media-expressions, it has no operator
+	// then there is no need to go any further, just return the value
+	@if map-has-key( $_media-expressions, $_expression ){ 
+		@return map-get( $_media-expressions, $_expression );
+
+	}
+
+	$_operator  : get-expression-operator( $_expression );
+	$_dimension : get-expression-dimension( $_expression, $_operator );
+	$_prefix    : get-expression-prefix( $_operator );
+	$_value     : get-expression-value( $_expression, $_operator );
+
+	@return '(#{$_prefix}-#{$_dimension}: #{$_value})';
+}
+
+
+
+
+
+
+
+
+
+
+
+//
+// Function with no `@return` called next to `@warn` in Sass 3.3
+// to trigger a compiling error and stop the process.
+//
+@function noop() {}
+
+//
+// Determines whether a list of conditions is intercepted by the static breakpoint.
+//
+// @param {Arglist}   $_conditions  - Media query conditions
+//
+// @return {Boolean} - Returns true if the conditions are intercepted by the static breakpoint
+//
+@function im-intercepts-static-breakpoint($_conditions...) {
+  $no-media-breakpoint-value: map-get($_breakpoints, $im-no-media-breakpoint);
+
+  @if not $no-media-breakpoint-value {
+    @if im-log('`#{$im-no-media-breakpoint}` is not a valid breakpoint.') {}
+  }
+
+  @each $condition in $_conditions {
+    @if not map-has-key($_media-expressions, $condition) {
+      $_operator: get-expression-operator($condition);
+      $_prefix: get-expression-prefix($_operator);
+      $_value: get-expression-value($condition, $_operator);
+
+      @if ($_prefix == 'max' and $_value <= $no-media-breakpoint-value) or
+          ($_prefix == 'min' and $_value > $no-media-breakpoint-value) {
+        @return false;
+      }
+    } @else if not index($im-no-media-expressions, $condition) {
+      @return false;
+    }
+  }
+
+  @return true;
+}
+
+///
+// Parsing engine
+// @author Hugo Giraudel
+// @access private
+///
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// This mixin aims at redefining the configuration just for the scope of
+// the call. It is helpful when having a component needing an extended
+// configuration such as custom breakpoints (referred to as tweakpoints)
+// for instance.
+//
+
+@mixin media-context($tweakpoints: (), $tweak-media-expressions: ()) {
+  // Save global configuration
+  $global-breakpoints: $_breakpoints;
+  $global-media-expressions: $_media-expressions;
+
+  // Update global configuration
+  $_breakpoints: map-merge($_breakpoints, $tweakpoints) !global;
+  $_media-expressions: map-merge($_media-expressions, $tweak-media-expressions) !global;
+
+  @content;
+
+  // Restore global configuration
+  $_breakpoints: $global-breakpoints !global;
+  $_media-expressions: $global-media-expressions !global;
+}
+
+///
+// include-media public exposed API
+// @author Eduardo Boucas
+// @access public
+///
+
+
+//
+// Generates a media query based on a list of conditions
+//
+
+@mixin media( $_conditions... ){ 
+	@if ( length( $_conditions ) == 0 ) or ( im-intercepts-static-breakpoint( $_conditions... ) ){ 
+		@content;
+
+	} @else if ( length( $_conditions ) > 0 ){ 
+		@media #{unquote(parse-expression(nth($_conditions, 1 ) ) )} { 
+			// Recursive call
+			@include media( slice( $_conditions, 2 )... ){ 
+				@content;
+			}
+		}
+	}
+}

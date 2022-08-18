@@ -1,0 +1,173 @@
+// 
+// Lists
+// --------------------------------------------------
+// 
+// List, Bullet Types
+// --------------------------------------------------
+
+.list-disc { list-style: disc;}
+
+.list-circle { list-style: circle;}
+
+.list-square { list-style: square;}
+
+.list-upper-latin, 
+.list-upper-alpha { list-style: lower-alpha;}
+
+.list-lower-latin, 
+.list-lower-alpha { list-style: upper-alpha;}
+
+.list-upper-roman { list-style: upper-roman;}
+
+.list-lower-roman { list-style: lower-roman;}
+
+
+// 
+// List, Space
+// --------------------------------------------------
+
+.list-space > li + li { margin-top: @content-margin-half;}
+
+
+// 
+// List, Inline
+// --------------------------------------------------
+
+@_list-inline-margin:                      @content-margin;
+@_list-inline-padding:                     @_list-inline-margin;
+
+@_list-inline-margin-collapse:             0;
+@_list-inline-padding-collapse:            @_list-inline-margin-collapse;
+
+@_list-inline-margin-narrow:               @content-margin-quarter;
+@_list-inline-padding-narrow:              @_list-inline-margin-narrow;
+
+@_list-inline-margin-thin:                 @content-margin-half;
+@_list-inline-padding-thin:                @_list-inline-margin-thin;
+
+@_list-inline-margin-thick:                ( @content-margin + @content-margin-half );
+@_list-inline-padding-thick:               @_list-inline-margin-thick;
+
+@_list-inline-margin-wide:                 @content-margin-double;
+@_list-inline-padding-wide:                @_list-inline-margin-wide;
+
+@_list-inline-bullet-size:                 4px;
+
+// Default colors
+@list-inline-bullet-default-color:         @text-color;
+@list-inline-pipe-default-color:           @text-color;
+
+// Inverse colors
+@list-inline-bullet-inverse-color:         @white;
+@list-inline-pipe-inverse-color:           @white;
+
+@_list-inline-inline-block-offset:         2px;
+ 
+ 
+.list-inline { 
+	.list-unstyled();
+
+	> li { 
+		position: relative;
+		display: inline-block;
+		margin-right: @_list-inline-margin;
+
+		&:last-child { margin-left: 0;}
+	}
+
+	&.list-inline-collapse > li { margin-right: @_list-inline-margin-collapse;}
+	&.list-inline-narrow >  li  { margin-right: @_list-inline-margin-narrow;}
+	&.list-inline-thin > li     { margin-right: @_list-inline-margin-thin;}
+	&.list-inline-thick >  li   { margin-right: @_list-inline-margin-thick;}
+	&.list-inline-wide > li     { margin-right: @_list-inline-margin-wide;}
+
+
+	&.list-inline-bullet, 
+	&.list-inline-pipe { 
+		> li { padding-right: @_list-inline-padding;}
+
+		&.list-inline-narrow > li { padding-right: @_list-inline-padding-narrow;}
+		&.list-inline-thin > li   { padding-right: @_list-inline-padding-thin;}
+		&.list-inline-thick > li  { padding-right: @_list-inline-padding-thick;}
+		&.list-inline-wide > li   { padding-right: @_list-inline-padding-wide;}
+
+	//	> li + li { padding-left: ( @_list-inline-padding + @_list-inline-inline-block-offset );}
+
+	//	&.list-inline-narrow > li + li { padding-left: ( @_list-inline-padding-narrow + @_list-inline-inline-block-offset );}
+	//	&.list-inline-thin > li + li   { padding-left: ( @_list-inline-padding-thin + @_list-inline-inline-block-offset );}
+	//	&.list-inline-thick > li + li  { padding-left: ( @_list-inline-padding-thick + @_list-inline-inline-block-offset );}
+	//	&.list-inline-wide > li + li   { padding-left: ( @_list-inline-padding-wide + @_list-inline-inline-block-offset );}
+	}
+
+
+	&.list-inline-bullet { 
+		> li { 
+			&:after { 
+				content: '';
+				position: absolute;
+				top: 50%;
+				right: -( floor( @_list-inline-bullet-size / 2 ) + @_list-inline-inline-block-offset );
+				margin-top: -( floor( @_list-inline-bullet-size / 2 ) );
+				border-radius: 50%;
+				.square( @_list-inline-bullet-size );
+				background-color: @list-inline-bullet-default-color;
+				.translate( 0, -50% );
+			}
+
+			&:last-child:after { display: none;}
+		}
+
+		&.list-inline-inverse > li:after { background-color: @list-inline-bullet-inverse-color;}
+	}
+
+	&.list-inline-pipe { 
+		> li { 
+			&:after { 
+				content: '';
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				border-left: 1px solid @list-inline-pipe-default-color;
+			}
+
+			&:last-child:after { display: none;}
+		}
+
+		&.list-inline-inverse > li:after { border-left-color: @list-inline-pipe-inverse-color;}
+	}
+}
+
+
+// @media @query-screen and @query-sm-up { 
+// 	.list-inline-sm-unstack > li { 
+// 		display: list-item;
+
+// 		+ li { margin-left: 0 !important;}
+
+// 		&.list-inline-bullet > li + li:before, 
+// 		&.list-inline-pipe > li + li:before { display: none;}
+// 	}
+// }
+
+// @media @query-screen and @query-md-up { 
+// 	.list-inline-md-unstack > li { 
+// 		display: list-item;
+
+// 		+ li { margin-left: 0 !important;}
+
+// 		&.list-inline-bullet > li + li:before, 
+// 		&.list-inline-pipe > li + li:before { display: none;}
+// 	}
+// }
+
+// @media @query-screen and @query-lg-up { 
+// 	.list-inline-lg-unstack > li { 
+// 		display: list-item;
+
+// 		+ li { margin-left: 0 !important;}
+
+// 		&.list-inline-bullet > li + li:before, 
+// 		&.list-inline-pipe > li + li:before { display: none;}
+// 	}
+// }

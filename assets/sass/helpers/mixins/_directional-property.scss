@@ -1,0 +1,50 @@
+// 
+// Builds directional properties by parsing CSS shorthand values. For example,
+// a value of `10px null` will output top and bottom directional properties,
+// but the `null` skips left and right from being output.
+// --------------------------------------------------
+
+@mixin _directional-property( $_property, $_suffix, $_values ){ 
+	$_all:    $_property +             if( $_suffix, "-#{$_suffix}", "" );
+	$_top:    $_property + "-top"    + if( $_suffix, "-#{$_suffix}", "" );
+	$_bottom: $_property + "-bottom" + if( $_suffix, "-#{$_suffix}", "" );
+	$_left:   $_property + "-left"   + if( $_suffix, "-#{$_suffix}", "" );
+	$_right:  $_property + "-right"  + if( $_suffix, "-#{$_suffix}", "" );
+
+	$_values: _compact-shorthand( $_values );
+
+	@if _contains-false( $_values ){ 
+		@if nth( $_values, 1 ){ 
+			#{$_top}: nth( $_values, 1 );
+
+		}
+
+		@if length( $_values ) == 1 { 
+			@if nth( $_values, 1 ){ 
+				#{$_right}: nth( $_values, 1 );
+
+			}
+		} @else { 
+			@if nth( $_values, 2 ){ 
+				#{$_right}: nth( $_values, 2 );
+
+			}
+		}
+
+		@if length( $_values ) == 2 { 
+			@if nth( $_values, 1 ) { #{$_bottom}: nth( $_values, 1 );}
+			@if nth( $_values, 2 ) { #{$_left}: nth( $_values, 2 );}
+
+		} @else if length( $_values ) == 3 { 
+			@if nth( $_values, 3 ) { #{$_bottom}: nth( $_values, 3 );}
+			@if nth( $_values, 2 ) { #{$_left}: nth( $_values, 2 );}
+
+		} @else if length( $_values ) == 4 { 
+			@if nth( $_values, 3 ) { #{$_bottom}: nth( $_values, 3 );}
+			@if nth( $_values, 4 ) { #{$_left}: nth( $_values, 4 );}
+
+		}
+	} @else { 
+		#{$_all}: $_values;
+	}
+}

@@ -1,0 +1,48 @@
+// 
+// Skills
+// --------------------------------------------------
+
+.skills { 
+	border: 1px solid @border-color;
+	border-bottom: none;
+	border-left: none;
+	margin-bottom: @content-margin-half;
+	text-align: center;
+	.material-box-shadow( 1 );
+}
+
+.skill { 
+	padding: 50px 0;
+	border: 1px solid @border-color;
+	border-top: none;
+	border-right: none;
+	color: @gray;
+	.background-rgb( @white );
+
+	.skill-details { 
+		margin: 0 0 @content-margin-half;
+
+		.fa { 
+			position: relative;
+			top: 2px;
+			margin-right: @content-margin-quarter;
+			.font-size( @font-size-xlarge + 5 );
+		}
+	}
+
+	.skill-title { 
+		margin: 0;
+		color: @text-color;
+		.font-size( @font-size-medium );
+	}
+
+	.skill-percentage { 
+		.font-size( @font-size-xlarge );
+		letter-spacing: 2px;
+
+		&:after { 
+			content: '%';
+			margin-left: 2px;
+		}
+	}
+}

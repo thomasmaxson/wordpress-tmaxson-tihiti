@@ -1,0 +1,27 @@
+// 
+// Social Icons
+// --------------------------------------------------
+
+.social-icons { 
+	display: inline-block;
+	@include list-inline;
+	@include clearfix;
+
+	a { 
+		border-width: 2px;
+		@include material-box-shadow( 0 );
+		@include transition( all $transition-duration $transition-timing-function );
+
+		&:hover { text-decoration: none;}
+
+		&.btn .fa { 
+			left: -1px !important;
+			top: -1px !important;
+		}
+
+		@each $_social-site, $_social-color in $social-sites { 
+			&.btn-#{$_social-site}:hover { color: $_social_color;}
+		}
+
+	}
+}

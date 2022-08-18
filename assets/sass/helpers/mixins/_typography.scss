@@ -1,0 +1,133 @@
+// 
+// Fonts
+// --------------------------------------------------
+
+@mixin font( $_size: $font-size-base, $_family: $font-family-sans-serif, $_weight: false ){ 
+	@include font-size( $_size );
+	font-family: $_family;
+
+	@if $_weight = false { 
+		font-weight: $_weight;
+
+	}
+}
+
+@mixin font-primary( $_size: $font-size-base, $_type: book, $_weight: false ){ 
+	@include font-size( $_size );
+	@include font-family-primary( $_type, $_weight );
+}
+
+@mixin font-gentleman( $_size: $font-size-base, $_type: book, $_weight: false ){ 
+	@include font-size( $_size );
+	@include font-family-gentleman( $_type, $_weight );
+}
+
+
+// 
+// Font Size
+// ----------------------------------------
+
+@mixin font-size( $_size: $font-size-base ){ 
+	@if unitless( $_size ) { 
+		$_size: $_size * 1px;
+
+		@if true == $_debug { 
+			@warn "Assuming size parameter `#{$_size}` to be in pixels for `font-size`.";
+		}
+	}
+
+	$_emSize: ( _strip-unit( $_size ) / 10 );
+
+	font-size: $_size;
+
+	@if true == $_support_modernizr { 
+		.cssemunit & { font-size: _set-unit( $_emSize, em );}
+		.cssremunit & { font-size: _set-unit( $_emSize, rem );}
+
+	} @else { 
+		font-size: _set-unit( $_emSize, em );
+		font-size: _set-unit( $_emSize, rem );
+
+	}
+}
+
+
+// 
+// Font Family
+// ----------------------------------------
+
+@mixin font-family-primary( $_size: book, $_weight: false ){ 
+	@include font-family-gentleman( $_size, $_weight );
+}
+
+
+// 
+// Gentleman
+// ------------------------------
+
+@mixin font-family-gentleman( $_size: book, $_weight: false ){ 
+	@if map-has-key( $font-family-gentleman, $_size ){ 
+		$_font-family: map-get( $font-family-gentleman, $_size );
+
+		font-family: $_font-family;
+
+		@if $_weight != false && map-has-key( $font-weight-gentleman, $_size ){ 
+			$_font-weight: map-get( $font-weight-gentleman, $_size );
+
+			font-weight: $_font-weight;
+
+		}
+	} @else { 
+		$_font-family-gentleman-default: $font-family-gentleman-book !default;
+		$_font-weight-gentleman-default: $font-family-gentleman-book !default;
+
+		@if true == $_debug { 
+			@warn "`#{$_size}` is not a valid font weight for the Gentleman font family. The default weight of `book` has been used instead.";
+		}
+
+		font-family: $_font-family-gentleman-default;
+
+		@if $_weight != false { 
+			font-weight: $_font-weight-gentleman-default;
+
+		}
+	}
+}
+
+
+// 
+// Text Selection
+// ----------------------------------------
+
+@mixin selection( $_bg-color: $brand-primary, $_light-text: $white, $_dark-text: $text-color ){ 
+	$_selection-text-color : $_light-text;
+
+	// If light background, use dark text color
+	@if ( lightness( $_bg-color ) > 50 ){ 
+		$_selection-text-color : $_dark-text;
+
+	}
+
+	&::selection { 
+		color: $_selection-text-color;
+		background: $_bg-color;
+
+	}
+
+	&::-moz-selection { 
+		color: $_selection-text-color;
+		background: $_bg-color;
+
+	}
+}
+
+
+// 
+// Legibility
+// ----------------------------------------
+
+@mixin legibility { 
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}

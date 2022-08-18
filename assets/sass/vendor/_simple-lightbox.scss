@@ -1,0 +1,165 @@
+$sl-overlay-background:                    $white !default;
+$sl-navigation-color:                      $text-color !default;
+
+$sl-caption-color:                         $white !default;
+$sl-caption-background:                    rgba( 0, 0, 0, 0.8 ) !default;
+
+$sl-counter-fontsize:                      $font-size-base !default;
+$sl-close-fontsize:                        $font-size-base !default;
+
+$sl-iframe-border:                         0 none !default;
+
+
+body.hidden-scroll { overflow: hidden;}
+
+.sl-overlay { 
+	@include fixed( 0 );
+	display: none;
+	background: $sl-overlay-background;
+//	opacity: 0.90;
+	z-index: 1050;
+
+	.admin-bar & { 
+		top: $wp-admin-bar-mobile-height;
+
+		// Desktop ONLY
+		@media ( min-width: $grid-float-breakpoint ){ 
+			top: $wp-admin-bar-height;
+		}
+	}
+}
+
+.sl-wrapper { 
+	z-index: 1040;
+
+	button { 
+		border: 0 none;
+		background: transparent;
+		@include font-size( 24px );
+		padding: 0;
+		cursor: pointer;
+
+		&:hover { opacity: 0.7;}
+	}
+
+	.sl-close { 
+		display: none;
+		@include fixed( 0, 0, null, null );
+		@include square( 60px );
+		line-height: 60px;
+		z-index: 1060;
+
+		&:focus { outline: none;}
+	}
+
+	.sl-counter { 
+		@include fixed( 0, null, null, 0 );
+		display: none;
+		@include square( 60px );
+		line-height: 60px;
+		text-align: center;
+		z-index: 1060;
+	}
+
+	.sl-navigation { 
+		width: 100%;
+		display: none;
+
+		button { 
+			@include fixed( 60px, null );
+			display: block;
+			width: 60px;
+			text-align: center;
+			z-index: 1060;
+
+			&.sl-next { right: 0;}
+			&.sl-prev { left: 0;}
+
+			&:focus { outline: none;}
+
+			@media ( min-width: $grid-float-breakpoint ) { 
+				width: 100px;
+			}
+		}
+	}
+
+	.sl-image { 
+		position: fixed;
+		@include cursor( grab );
+		-ms-touch-action: none;
+		touch-action: none;
+		z-index: 10000;
+
+		&:active { @include cursor( grabbing );}
+
+		img { 
+			display: block;
+			padding: 0;
+			margin: 0;
+		}
+
+		iframe { 
+			border: $sl-iframe-border;
+			background: $black;
+		}
+
+		.sl-caption { 
+			@include absolute( null, 0, 0, 0 );
+			display: none;
+			padding: 10px;
+			color: $sl-caption-color;
+			background: $sl-caption-background;
+			
+			&.pos-top { 
+				bottom: auto;
+				top: 0;
+			}
+
+			&.pos-outside { bottom: auto;}
+		}
+
+		.sl-download { 
+			@inclide absolute( null, 5px, 5px, null );
+			display: none;
+			color: $sl-navigation-color;
+			z-index: 1060;
+		}
+	}
+}
+
+.sl-spinner { 
+		@include fixed( 50%, null, null, 50% );
+		display: none;
+		border: 5px solid #333;
+		border-radius: 40px;
+		margin: -20px 0 0 -20px;
+		@include square( 40px );
+		opacity: 0;
+		z-index: 1007;
+		@include animation( pulsate 1s ease-out infinite );
+	//	-webkit-animation: pulsate 1s ease-out infinite;
+	//	   -moz-animation: pulsate 1s ease-out infinite;
+	//	    -ms-animation: pulsate 1s ease-out infinite;
+	//	     -o-animation: pulsate 1s ease-out infinite;
+	//	        animation: pulsate 1s ease-out infinite;
+}
+
+.sl-scrollbar-measure { 
+	@include absolute( -9999px, null, null, null );
+	@include square( 50px );
+	overflow: scroll;
+}
+
+@include keyframes( pulsate ){
+	0% { 
+		transform: scale(.1);
+		opacity: 0.0;
+	}
+
+	50% { opacity: 1;}
+
+	100% { 
+		transform: scale(1.2);
+		opacity: 0;
+	}
+}

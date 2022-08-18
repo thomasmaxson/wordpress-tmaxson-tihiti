@@ -1,0 +1,116 @@
+// 
+// Flexbox
+// --------------------------------------------------
+
+@mixin flex-display( $_display: flex ){ 
+	display: ~"-webkit-${_display}";
+	display:    ~"-moz-${_display}";
+	display:     ~"-ms-${_display}box"; // IE10 uses -ms-flexbox
+	display:     ~"-ms-${_display}";    // IE11
+	display: $display;
+}
+
+
+// 
+// The 'flex' shorthand
+// ----------------------------------------
+
+@mixin flex( $_columns: initial ){ 
+	@include prefix( flex, $_columns );
+}
+
+//
+// Flex Flow Direction
+// ----------------------------------------
+
+@mixin flex-direction( $_direction: row ){ 
+	@include prefix( flex-direction, $_direction );
+}
+
+
+//
+// Flex Line Wrapping
+// ----------------------------------------
+
+@mixin flex-wrap( $_wrap: nowrap ){ 
+	@include prefix( flex-wrap, $_wrap );
+}
+
+
+//
+// Flex Direction and Wrap
+// ----------------------------------------
+
+@mixin flex-flow( $_flow ){ 
+	@include prefix( flex-flow, $_flow );
+}
+
+//
+// Display Order
+// ----------------------------------------
+
+@mixin flex-order( $_order: 0 ){
+	@include prefix( order, $_order );
+}
+
+
+//
+// Flex grow factor
+// ----------------------------------------
+
+@mixin flex-grow( $_grow: 0 ){ 
+	@include prefix( flex-grow, $_grow );
+}
+
+//
+// Flex shrink
+// ----------------------------------------
+
+@mixin flex-shrink( $_shrink: 1 ){	
+	@include prefix( flex-shrink, $_shrink );
+}
+
+
+//
+// Flex basis
+// ----------------------------------------
+
+@mixin flex-basis( $_width: auto ){ 
+	@include prefix( flex-basis, $_width );
+}
+
+
+//
+// Axis Alignment
+// ----------------------------------------
+
+@mixin justify-content( $_justify: flex-start ){ 
+	@include prefix( justify-content, $_justify );
+}
+
+
+//
+// Packing Flex Lines
+// ----------------------------------------
+
+@mixin align-content( $_align: stretch ){ 
+	@include prefix( align-content, $_align );
+}
+
+
+//
+// Cross-axis Alignment
+// ----------------------------------------
+
+@mixin align-items( $_align: stretch ){ 
+	@include prefix( align-items, $_align );
+}
+
+
+//
+// Cross-axis Alignment
+// ----------------------------------------
+
+@mixin align-self( $_align: auto ){ 
+	@include prefix( align-self, $_align );
+}

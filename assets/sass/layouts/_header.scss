@@ -1,0 +1,152 @@
+// 
+// Header
+// --------------------------------------------------
+
+.site-header { 
+	$_header-font-size: $font-size-small;
+
+	padding: $content-padding-quarter 0 0;
+	@include font-primary( $_header-font-size, book );
+
+	.navbar-nav { 
+		position: relative;
+		text-align: center;
+		text-transform: uppercase;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	@include query-mobile { 
+		.container-fluid, 
+		.container { 
+			display: block;
+			padding: 0;
+			margin: 0 auto;
+			width: 100%;
+
+			> .navbar-collapse, 
+			> .navbar-header { 
+				padding: 0;
+				margin: 0 auto;
+			}
+
+			> .navbar-header { margin-bottom: $content-margin-half;}
+
+			> .navbar-collapse { 
+				@include background-rgb( $gray-800 );
+				box-shadow: inset 0 0 20px 10px rgba( 0, 0, 0, 0.20 );
+
+				.navbar-nav { 
+					padding: 0;
+					margin: 0;
+
+					> li { 
+						+ li { border-top: 1px solid $gray-600;}
+
+						> a { 
+							&:hover, 
+							&:focus { @include background-rgb( $gray-900 );}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	@include query-desktop { 
+
+		.navbar-collapse { margin-top: 10px;}
+
+		.navbar-nav { 
+			> li { 
+				margin-right: $content-margin-half;
+
+				> a { 
+					position: relative;
+					padding-top: ( $navbar-padding-vertical + 4 );
+					padding-bottom: ( $navbar-padding-vertical );
+
+					&:before { 
+						content: '';
+						@include absolute( null, 0, 0, 0 );
+						height: 0;
+						@include background-rgb( $white );
+						@include transition( height ( $transition-duration * 1.5 ) $transition-timing-function );
+					}
+
+					&:hover, 
+					&:focus { 
+						@include background-rgb( transparent );
+
+						&:before { height: 4px;}
+					}
+
+					&:focus { outline: 1px $white dotted;}
+				}
+
+				&.active { 
+					> a:before { 
+						height: 4px;
+						@include background-rgb( $brand-primary-dark );
+					}
+				}
+
+
+				&.menu-item-button.menu-item-last { 
+					> a { 
+						@include background-rgb( transparent );
+						text-transform: uppercase;
+
+						&:before { 
+							top: 0;
+							height: auto !important;
+							@include background-rgb( $brand-primary-dark );
+							@include transition( bottom ( $transition-duration * 1.5 ) $transition-timing-function );
+							z-index: -1;
+						}
+
+						&:after { 
+							content: '';
+							@include absolute( 100%, 0, 0, 0 );
+							@include background-rgb( darken( $brand-primary-dark, 10% ) );
+							@include transition( top ( $transition-duration * 1.5 ) $transition-timing-function );
+							z-index: -1;
+						}
+
+						&:hover, 
+						&:focus { 
+							&:before { bottom: 100%;}
+							&:after { top: 0;}
+						}
+					}
+
+					&.active { 
+						> a { 
+							&:before { bottom: 100%;}
+							&:after { top: 0;}
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+
+	.navbar-toggle { @include color( $white );}
+
+
+	// WordPress Admin Bar
+	.admin-bar &.navbar-fixed-top { 
+		top: $wp-admin-bar-mobile-height;
+
+		@media screen and ( min-width: #{$wp-breakpoint-md} ){ 
+			top: $wp-admin-bar-height;
+		}
+
+		// Force admin bar to be sticky at all times
+		~ #wpadminbar { position: fixed !important;}
+	}
+}

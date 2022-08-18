@@ -1,0 +1,46 @@
+// 
+// Background
+// --------------------------------------------------
+// 
+// RGB Background Color
+// ----------------------------------------
+
+@mixin background-rgb( $_color: $white ){ 
+	background-color: $_color;
+//	background-color: rgb( $_color );
+//	background-color: hsl( hue( $_color ), saturation( $_color ), lightness( $_color ) );
+}
+
+
+// 
+// RGBA Background Color
+// ----------------------------------------
+
+@mixin background-rgba( $_color: $white, $_alpha: 1.0 ){ 
+	@if ( $_alpha <= 0 ) or $_alpha > 1.0 { 
+		@include background-rgb( $_color );
+
+	} @else { 
+		$_alpha_color: hsla( hue( $_color ), saturation( $_color ), lightness( $_color ), $_alpha );
+
+		background-color: $_color; // Fallback for older browsers
+		background-color: $_alpha_color;
+
+	//	$_ie_color: argb( $_color );
+
+	//	zoom: 1;
+	//	background-color: transparent\9;
+	//	-ms-filter:  "progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$_ie_color}, endColorstr=#{$_ie_color})"; // IE 8+
+	//	filter: ~"progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$_ie_color}, endColorstr=#{$_ie_color})"; // IE 6 & 7
+
+	}
+}
+
+
+// 
+// Background Size
+// ----------------------------------------
+
+@mixin background-size( $_cover: cover ){ 
+	@include prefix( background-size, $_cover );
+}

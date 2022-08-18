@@ -1,0 +1,47 @@
+// 
+// Buttons
+// --------------------------------------------------
+
+.portfolio-filters { 
+	padding: @content-padding-half @content-padding-quarter;
+	border-bottom: 1px solid transparent;
+	margin: 0 auto @content-margin;
+	.font-size( 0 );
+	text-align: center;
+
+	&.affix {
+		position: fixed;
+		top: 0;
+		border-color: @border-color;
+		width: 100%;
+		background-color: @body-bg;
+		z-index: @zindex-navbar-fixed;
+	}
+
+	&.affix-top { position: static;}
+
+	li { 
+		position: relative;
+		padding-right: 0 !important;
+		margin-right: 0 !important;
+		.font-size( @font-size-base );
+
+		+ li { margin-left: -1px;}
+
+		&.active { 
+
+			a { border-color: @text-color;}
+		}
+	}
+
+	a { 
+		display: inline-block;
+		padding: @content-margin-quarter @content-margin-half;
+		border: 1px solid transparent;
+		.color( @text-color );
+		.font-size( @font-size-small );
+		text-decoration: none;
+		text-transform: uppercase;
+		.transition( all @transition-duration @transition-timing-function );
+	}
+}

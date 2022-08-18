@@ -1,0 +1,80 @@
+// 
+// Skills
+// --------------------------------------------------
+
+$_mouse-animation-name:             scrollWheel;
+$_mouse-animation-duration:         1.5s;
+$_mouse-animation-timing-function:  linear;
+$_mouse-animation-delay:            0;
+$_mouse-animation-iteration-count:  infinite;
+$_mouse-animation-direction:        normal;
+
+$_mouse-width:                      24px;
+$_mouse-height:                     ( $_mouse-width + ceil( $_mouse-width / 2 ) );
+$_mouse-length:                     ceil( $_mouse-width / 4 );
+
+$_mouse-position-start:             5px;
+$_mouse-position-end:               ceil( $_mouse-position-start * 2 );
+
+$_mouse-border-width:               3px;
+$_mouse-default-border-color:       $text-color;
+$_mouse-inverse-border-color:       $white;
+
+
+@include keyframes( $_mouse-animation-name ){ 
+	0%  { 
+		top: $_mouse-position-start;
+		opacity: 0;
+	}
+
+	25%  { 
+		top: $_mouse-position-start;
+		opacity: 1.0;
+	}
+
+	75% { 
+		top: $_mouse-position-end;
+		opacity: 1.0;
+	}
+
+	100% { 
+		top: $_mouse-position-end;
+		opacity: 0;
+	}
+}
+
+.scroll-wheel { 
+	@include absolute( null, null, 50px, 50% );
+	display: none;
+	border: $_mouse-border-width solid $_mouse-default-border-color;
+	border-radius: ceil( $_mouse-width / 2 );
+	@include size( $_mouse-width, $_mouse-height );
+	z-index: 5;
+	@include translateX( -50% );
+
+	&:after { 
+		content: '';
+		@include absolute( ( $_mouse-border-width + floor( $_mouse-border-width / 2 ) ), null, null, 50% );
+		display: block;
+		border-radius: ceil( $_mouse-border-width / 2 );
+		@include size( $_mouse-border-width, $_mouse-length );
+		@include background-rgb( $_mouse-default-border-color );
+		@include translateX( -50% );
+		@include animation-name( $_mouse-animation-name );
+		@include animation-duration( $_mouse-animation-duration );
+		@include animation-timing-function( $_mouse-animation-timing-function );
+	//	@include animation-delay( $_mouse-animation-delay );
+		@include animation-iteration-count( $_mouse-animation-iteration-count );
+	//	@include animation-direction( $_mouse-animation-direction );
+	}
+
+	&.scroll-wheel-inverse { 
+		border-color: $_mouse-inverse-border-color;
+
+		&:after { @include background-rgb( $_mouse-inverse-border-color );}
+	}
+
+	@include query-desktop { 
+		display: inline-block;
+	}
+}

@@ -1,0 +1,65 @@
+// 
+// Ribbon
+// 
+//             TOP-LEFT          TOP-RIGHT
+//             ---------------------------
+// LEFT-TOP    |                         | RIGHT-TOP
+//             |                         |
+// LEFT-BOTTOM |                         | RIGHT-BOTTOM
+//             ---------------------------
+//            BOTTOM-LEFT     BOTTOM-RIGHT
+// 
+// --------------------------------------------------
+
+@mixin ribbon( $_direction : top-left, $_color: $black, $_size: 1em ){ 
+	$_neg_size : -( $_size );
+
+	position: relative;
+
+	&:before { 
+		content: "";
+		position: absolute;
+
+		@if( $_direction == top-left )
+		{ 
+			@include trbl( $_neg_size, null, null, 0 );
+			@include triangle( down-right, $_size, $_color );
+
+		} @else if( $_direction == top-right )
+		{ 
+			@include trbl( $_neg_size, 0, null, null );
+			@include triangle( down-left, $_size, $_color );
+
+		} @else if( $_direction == right-top )
+		{ 
+			@include trbl( 0, $_neg_size, null, null );
+			@include triangle( down-left, $_size, $_color );
+
+		} @else if( $_direction == right-bottom )
+		{ 
+			@include trbl( null, $_neg_size, 0, null );
+			@include triangle( up-left, $_size, $_color );
+
+		} @else if( $_direction == bottom-right )
+		{ 
+			@include trbl( null, 0, $_neg_size, null );
+			@include triangle( up-left, $_size, $_color );
+
+		} @else if( $_direction == bottom-left )
+		{ 
+			@include trbl( null, null, $_neg_size, 0 );
+			@include triangle( up-right, $_size, $_color );
+
+		} @else if( $_direction == left-bottom )
+		{ 
+			@include trbl( null, null, 0, $_neg_size );
+			@include triangle( up-right, $_size, $_color );
+
+		} @else if( $_direction == left-top )
+		{ 
+			@include trbl( 0, null, null, $_neg_size );
+			@include triangle( down-right, $_size, $_color );
+
+		}
+	}
+}

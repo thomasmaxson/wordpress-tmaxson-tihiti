@@ -1,0 +1,74 @@
+// 
+// Pagination
+// --------------------------------------------------
+
+.pagination { 
+	display: block;
+	padding: 0;
+	margin: 0;
+	.clearfix();
+}
+
+.pagination-list { 
+	padding: 0;
+	margin: 0;
+
+	li { width: 33.333%;}
+
+	a { 
+		position: relative;
+		display: block;
+		width: 100%;
+		line-height: ( @content-margin-double + @content-margin );
+		text-align: center;
+		overflow: hidden;
+		outline: none;
+
+		.link( @text-color, @brand-primary );
+	}
+
+
+	@media @query-screen and @query-mobile { 
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-wrap: wrap;
+		flex-wrap: wrap;
+
+		a { line-height: @content-margin-double;}
+
+		.nav-back, 
+		.page-prev, 
+		.page-next { 
+			float: left;
+			width: 50%;
+			padding: 0 10px;
+		}
+
+		.nav-back { 
+			display: none;
+			order: 1;
+    	}
+
+		.page-prev { order: 2;}
+
+		.page-next { 
+			order: 3;
+			border-left: 1px solid @border-color-light;
+		}
+
+	}
+
+
+	@media @query-screen and @query-desktop { 
+
+		li + li { margin-left: -5px !important;}
+
+		.nav-back { 
+			border-right: 1px solid @border-color-light;
+			border-left: 1px solid @border-color-light;
+		}
+
+	}
+}
